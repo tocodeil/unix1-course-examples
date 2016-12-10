@@ -1,0 +1,37 @@
+Files and Directories Lab
+Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
+
+1. Create a new folder named "lab" in your home directory and inside create the files:
+
+  - a.out, hero.c, enemy.c, game.c, main.c
+  - human.h, monster.h
+  - .highscore
+
+Write here the commands you used:
+
+2. "cd" into lab folder and inside create the following subdirectories:
+  - Music
+  - Misc
+  - Drivers
+
+Write here the commands you used:
+
+3. Copy the file "/etc/passwd" to each subdirectory created in (2).
+
+Write here the commands you used:
+
+4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
+Now create a new directory named "myinfo" and move the file into it.
+
+Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
+
+5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
+
+Write here the commands you used:
+
+6. Move the folder "Music" with all its contents into directory "Drivers"
+
+Write here the commands you used:
+
+
+7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?

@@ -1,0 +1,17 @@
+Use grep to print only the lines from "input" for which:
+
+1. There is a binary number in the line
+
+2. There is an even binary number in the line
+
+3. Line includes a hexadecimal number
+
+4. Line starts with a lowercase letter
+
+5. Line is not empty
+
+6. Line starts with a lowercase letter and ends in a number
+
+7. Line is longer than 50 characters
+
+8. Line is of an even length
