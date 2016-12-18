@@ -6,6 +6,8 @@ Questions online: https://www.tocode.co.il/bundles/unix1/lessons/cmdlab
   - your default shell?
   - a list of all shells currently installed on the machine?
 
+I know my current shell is bash
+
 2. View the file /etc/passwd on your machine with the command "cat /etc/passwd". Then read about the file in "man 5 passwd". What information is held in the file? What are the fields in each line?
 
 3. In Unix, the /etc folder holds configuration files. Display all files in "/etc" folder ordered by file size (Hint: search in "man ls")
