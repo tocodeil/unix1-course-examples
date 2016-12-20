@@ -11,12 +11,10 @@ maxim@maxim-virtual-machine:~$ echo $0
 maxim@maxim-virtual-machine:~$ env | grep ^SHELL
 SHELL=/bin/bash
   
-  
 maxim@maxim-virtual-machine:~$ echo $SHELL
 /bin/bash
 
 
- 
   - a list of all shells currently installed on the machine?
 maxim@maxim-virtual-machine:~$ cat /etc/shells
 # /etc/shells: valid login shells
@@ -24,8 +22,6 @@ maxim@maxim-virtual-machine:~$ cat /etc/shells
 /bin/dash
 /bin/bash
 /bin/rbash
-
-
 
 2. View the file /etc/passwd on your machine with the command "cat /etc/passwd". 
 Then read about the file in "man 5 passwd". What information is held in the file? 
