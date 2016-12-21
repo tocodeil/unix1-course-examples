@@ -9,6 +9,31 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
 
 Write here the commands you used:
 
+mkdir lab
+touch a.out hero.c enemy.c games.c main.c human.h monster.h .highscore
+
+maxim@maxim-virtual-machine:~/lab$ ls -l
+total 0
+-rw-rw-r-- 1 maxim maxim 0 Dec 21 11:52 a.out
+-rw-rw-r-- 1 maxim maxim 0 Dec 21 11:52 enemy.c
+-rw-rw-r-- 1 maxim maxim 0 Dec 21 11:52 games.c
+-rw-rw-r-- 1 maxim maxim 0 Dec 21 11:52 hero.c
+-rw-rw-r-- 1 maxim maxim 0 Dec 21 11:52 human.h
+-rw-rw-r-- 1 maxim maxim 0 Dec 21 11:52 main.c
+-rw-rw-r-- 1 maxim maxim 0 Dec 21 11:52 monster.h
+maxim@maxim-virtual-machine:~/lab$ ls -lha
+total 8.0K
+drwxrwxr-x  2 maxim maxim 4.0K Dec 21 11:52 .
+drwxr-xr-x 17 maxim maxim 4.0K Dec 21 10:09 ..
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 a.out
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 enemy.c
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 games.c
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 hero.c
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 .highscore
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 human.h
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 main.c
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 monster.h
+
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
   - Misc
@@ -16,22 +41,82 @@ Write here the commands you used:
 
 Write here the commands you used:
 
+maxim@maxim-virtual-machine:~/lab$ mkdir Music Misc Drivers
+maxim@maxim-virtual-machine:~/lab$ ls -l
+total 12
+-rw-rw-r-- 1 maxim maxim    0 Dec 21 11:52 a.out
+drwxrwxr-x 2 maxim maxim 4096 Dec 21 11:54 Drivers
+-rw-rw-r-- 1 maxim maxim    0 Dec 21 11:52 enemy.c
+-rw-rw-r-- 1 maxim maxim    0 Dec 21 11:52 games.c
+-rw-rw-r-- 1 maxim maxim    0 Dec 21 11:52 hero.c
+-rw-rw-r-- 1 maxim maxim    0 Dec 21 11:52 human.h
+-rw-rw-r-- 1 maxim maxim    0 Dec 21 11:52 main.c
+drwxrwxr-x 2 maxim maxim 4096 Dec 21 11:54 Misc
+-rw-rw-r-- 1 maxim maxim    0 Dec 21 11:52 monster.h
+drwxrwxr-x 2 maxim maxim 4096 Dec 21 11:54 Music
+
+
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
 
+maxim@maxim-virtual-machine:~/lab$ cp /etc/passwd /home/maxim/lab/Drivers/ &&  cp /etc/passwd /home/maxim/lab/Misc/ &&  cp /etc/passwd /home/maxim/lab/Music/
+maxim@maxim-virtual-machine:~/lab$
+maxim@maxim-virtual-machine:~/lab$
+maxim@maxim-virtual-machine:~/lab$ ls Drivers/
+passwd
+maxim@maxim-virtual-machine:~/lab$ ls Music/
+passwd
+maxim@maxim-virtual-machine:~/lab$ ls Misc/
+passwd
+
+
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
+maxim@maxim-virtual-machine:~/lab$ echo maxim simple stable free >> myinfo
+maxim@maxim-virtual-machine:~/lab$ cat myinfo
+maxim simple stable free
+
 
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
+
+maxim@maxim-virtual-machine:~/lab$ mkdir myinfo
+mkdir: cannot create directory �myinfo�: File exists
+
+In Linux, almost everything is a file descriptor. A directory is a special type of file that from the user's perspective can hold other files.
+
+So you can not have both with the same name, in the same directory at the same time.
 
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
 
+maxim@maxim-virtual-machine:~/lab$ mv main.c games.c enemy.c hero.c Music/
+maxim@maxim-virtual-machine:~/lab$ ls Music/
+enemy.c  games.c  hero.c  main.c  passwd
+
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
+maxim@maxim-virtual-machine:~/lab$ mv  Music/ Drivers/
+maxim@maxim-virtual-machine:~/lab$ ls Drivers/
 
+maxim@maxim-virtual-machine:~/lab$ ls Drivers/Music/
+enemy.c  games.c  hero.c  main.c  passwd
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+maxim@maxim-virtual-machine:~/lab$ rmdir Drivers/
+rmdir: failed to remove 'Drivers/': Directory not empty
+--NOT EMPTY--
+
+maxim@maxim-virtual-machine:~/lab$ rm -r Drivers/
+maxim@maxim-virtual-machine:~/lab$ ls -lha
+total 16K
+drwxrwxr-x  3 maxim maxim 4.0K Dec 21 12:09 .
+drwxr-xr-x 17 maxim maxim 4.0K Dec 21 12:06 ..
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 a.out
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 .highscore
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 human.h
+drwxrwxr-x  2 maxim maxim 4.0K Dec 21 11:57 Misc
+-rw-rw-r--  1 maxim maxim    0 Dec 21 11:52 monster.h
+-rw-rw-r--  1 maxim maxim   25 Dec 21 12:00 myinfo
