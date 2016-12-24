@@ -9,29 +9,52 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
 
 Write here the commands you used:
 
+touch a.out hero.c enemy.c game.c main.c
+touch human.h monster.h
+touch .highscore
+
+
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
   - Misc
   - Drivers
-
+  
 Write here the commands you used:
+
+cd lab
+mkdir Music Misc Drivers
+  
 
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
+
+cp /etc/passwd ./Drives
+cp /etc/passwd ./Misc
+cp /etc/passwd ./Music
 
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
 
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
 
+no, because they have the same name.
+yes, need to rename the file ,create the folder and than mv the file with original name.
+
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+
+mv *.c ./Music
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
 
+mv Music/ ./Drivers/
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+
+rmdir delete only if the directory is empty.
+for delete non empty folder we will use:
+rm -r Drivers 
