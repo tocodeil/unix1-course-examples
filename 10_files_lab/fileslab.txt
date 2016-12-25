@@ -8,6 +8,16 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
   - .highscore
 
 Write here the commands you used:
+mkdir lab
+cd lab
+touch a.out
+touch hero.c
+touch enemy.c
+touch game.c
+touch main.c
+touch human.h
+touch monster.h
+touch highscore.h
 
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
@@ -15,23 +25,52 @@ Write here the commands you used:
   - Drivers
 
 Write here the commands you used:
+cd lab
+mkdir Music
+mkdir Misc
+mkdir Drivers
 
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
+cd Drivers
+cp /etc/passwd . 
+cd ..
+cd Music
+cp /etc/passwd . 
+cd ..
+cd Misc
+cp /etc/passwd . 
+cd ..
 
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
-
+touch myinfo
+pico myinfo
+"Vili Medina" (save)
+mv myinfo myinfotxt
+mkdir myinfo
+cp myinfotxt myinfo
+rm -r myinfotxt
+cd myinfo
+mv myinfotxt myinfo
+cd ..
+## i changed the name of the txt file then created myinfo file , move myinfo(txt file) to myinfo file,
+and then chaned the myinfo(txt file) to the original name. ##
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
 
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
-
+mv main.c Music 
+mv game.c Music 
+mv enemy.c Music 
+mv hero.c Music 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
-
+mv Music Drivers
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+the folder is not empty so in order to delete it ,you need to use -r
+rm -r Drivers
