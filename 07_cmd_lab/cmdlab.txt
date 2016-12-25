@@ -3,11 +3,33 @@ Questions online: https://www.tocode.co.il/bundles/unix1/lessons/cmdlab
 
 1. Login to your UNIX account. How do you find:
   - your current shell?
+  
+  leo@leo-VirtualBox:~$ echo $0
+bash
+
   - your default shell?
+  exit from another shell
+  
   - a list of all shells currently installed on the machine?
+  
+    leo@leo-VirtualBox:~$ cat /etc/shells
+	
+# /etc/shells: valid login shells
+/bin/sh
+/bin/dash
+/bin/bash
+/bin/rbash
+
 
 2. View the file /etc/passwd on your machine with the command "cat /etc/passwd". Then read about the file in "man 5 passwd". What information is held in the file? What are the fields in each line?
 
+username, groups, userid, shell 
+
 3. In Unix, the /etc folder holds configuration files. Display all files in "/etc" folder ordered by file size (Hint: search in "man ls")
 
+ls -lS or ls -S
+
 4. Print current date/time formatted as: "Sun 21/03/2010, 14:30". Hint: read "man date" and search for the correct format string.
+
+
+leo@leo-VirtualBox:/etc$ date +"%a%D, %R"
