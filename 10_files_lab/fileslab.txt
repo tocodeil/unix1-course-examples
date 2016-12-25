@@ -9,6 +9,23 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
 
 Write here the commands you used:
 
+
+cd ~
+mkdir lab
+cd lab
+
+touch a.out
+touch hero.c
+touch enemy.c
+touch game.c
+touch main.c
+
+
+touch human.h
+touch monster.h
+
+touch .highscore
+
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
   - Misc
@@ -16,22 +33,61 @@ Write here the commands you used:
 
 Write here the commands you used:
 
+cd ~
+cd lab
+
+mkdir Drivers
+mkdir Misc
+mkdir Music
+
+
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
+
+
+cp /etc/passwd /home/leo/lab/Drivers
+cp /etc/passwd /home/leo/lab/Music
+cp /etc/passwd /home/leo/lab/Misc
 
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
 
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
 
+no
+mkdir: cannot create directory ‘myinfo’: File exists
+
+
+i can do a workaround by moving the file to another location, creating the folder, and then moving the file back to the folder:
+
+mv myinfo Music/
+leo@leo-VirtualBox:~/lab$ mkdir myinfo
+leo@leo-VirtualBox:~/lab/Music$ mv myinfo /home/leo/lab/myinfo/
+
+leo@leo-VirtualBox:~/lab/Music$ cd /home/leo/lab/myinfo/
+leo@leo-VirtualBox:~/lab/myinfo$ ll
+total 12
+-rw-rw-r-- 1 leo leo   26 דצמ 25 10:46 myinfo
+leo@leo-VirtualBox:~/lab/myinfo$ 
+
+
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+
+leo@leo-VirtualBox:~/lab$ mv *.c /home/leo/lab/Music/
+
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
 
+leo@leo-VirtualBox:~/lab$ mv Music/ Drivers/
+
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+
+no.
+
+need to use rm -rf
