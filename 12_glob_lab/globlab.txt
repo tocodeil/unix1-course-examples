@@ -1,29 +1,51 @@
-Glob Lab.
-https://www.tocode.co.il/bundles/unix1/lessons/globlab
-
 1. Type in a glob pattern to match:
 
   1. All files whose name starts with a lowercase letter
   Answer: 
+maxim@maxim-virtual-machine:~/wildcards$ ls -d [[:lower:]]*
+img  include  lib  src
 
   2. All files whose name starts with an uppercase letter
   Answer:
+maxim@maxim-virtual-machine:~/wildcards$ ls -d [[:upper:]]*
+Doc
 
   3. All files whose name ends in an "a", "e", "i", "o" or "u"
   Answer:
+maxim@maxim-virtual-machine:~/wildcards$ ls -d *[aeiou]
+include
 
   4. All files whose name DOES NOT end in an "a", "e", "i", "o" or "u"
   Answer:
+maxim@maxim-virtual-machine:~/wildcards$ ls  *[!aeiou] -d
+Doc  img  lib  src
 
-  5. All files with extension ".c" that are in a folder named "src"
+5. All files with extension ".c" that are in a folder named "src"
   Answer:
+maxim@maxim-virtual-machine:~/wildcards/src$ ls -d *[.c]
+main.c  playaer.c
 
-  6. All files with extension ".c" under any folder
+6. All files with extension ".c" under any folder
   Answer:
+maxim@maxim-virtual-machine:~/wildcards$ ls * | grep "\.c$"
+test.c
+zlib.c
+main.c
+playaer.c
 
 2. Write a command that would delete all files ending with a ".png" under any subdirectory.
+maxim@maxim-virtual-machine:~/wildcards$ find . -type f -name '*.png'
+./img/player.png
+./img/hero.png
+maxim@maxim-virtual-machine:~/wildcards$ find . -type f -name '*.png' -delete
 
-3. The command "ls -l" can take the name of a file or directory and show details on them. From within "wildcards" folder run "ls -l [A-Z]*". What was printed? Why?
 
-4. Search in "man ls" for an option to show only directory data so the command "ls _____ D*" should print only the word Doc
+3. The command "ls -l" can take the name of a file or directory and show details on them. 
+From within "wildcards" folder run "ls -l [A-Z]*". What was printed? Why?
 
+All the folders and fiels inside them, becays of the A-Z* matching.
+
+4. Search in "man ls" for an option to show only directory data so the command "ls _____ D*" 
+should print only the word Doc
+maxim@maxim-virtual-machine:~/wildcards$ ls  -d D*
+Doc
