@@ -5,25 +5,90 @@ https://www.tocode.co.il/bundles/unix1/lessons/globlab
 
   1. All files whose name starts with a lowercase letter
   Answer: 
+  #amir@ubuntu:~/wildcards$ find ./ -name "[[:lower:]]*.*"
+  #./Doc/test.c
+  #./lib/zlib.c
+  #./img/hero.png
+  #./img/player.png
+  #./src/player.c
+  #./src/main.c
+  #./include/player.h
+
 
   2. All files whose name starts with an uppercase letter
   Answer:
 
+  # amir@ubuntu:~/wildcards$ find ./ -name "[[:upper:]]*.*"
+  # ./Doc/README.txt
+
   3. All files whose name ends in an "a", "e", "i", "o" or "u"
   Answer:
+  # amir@ubuntu:~/wildcards$ find ./ -name "*[aeiou].*"
+  #./img/hero.png
 
   4. All files whose name DOES NOT end in an "a", "e", "i", "o" or "u"
   Answer:
+  # amir@ubuntu:~/wildcards$ find ! -name  "*[aeiou].*"
+  #.
+  #./Doc
+  #./Doc/test.c
+  #./Doc/README.txt
+  #./lib
+  #./lib/zlib.c
+  #./img
+  #./img/player.png
+  #./src
+  #./src/player.c
+  #./src/main.c
+  #./include
+  #./include/player.h
+
 
   5. All files with extension ".c" that are in a folder named "src"
   Answer:
+  #amir@ubuntu:~/wildcards$ find ./src  -name "*.[c]"
+  #./src/player.c
+  #./src/main.c
 
-  6. All files with extension ".c" under any folder
+
+  6. All files with extension ".c" under any folder 
   Answer:
+  #  amir@ubuntu:~/wildcards$ find ./  -name "*.[c]"
+  #./Doc/test.c
+  #./lib/zlib.c
+  #./src/player.c
+  #./src/main.c
+
 
 2. Write a command that would delete all files ending with a ".png" under any subdirectory.
+  #find ./  -name "*.png" -exec rm -f {} \;
+3. The command "ls -l" can take the name of a file or directory and show details on them. From within "wildcards" folder run "ls -l [A-Z]*". What was printed? # all the files were printed. Why? # "-l" didnt take the "[A-Z]* as a wildcards
 
-3. The command "ls -l" can take the name of a file or directory and show details on them. From within "wildcards" folder run "ls -l [A-Z]*". What was printed? Why?
+ #amir@ubuntu:~/wildcards$ ls -l [A-Z]*
+ #Doc:
+ #total 0
+ #-rw-rw-r-- 1 amir amir 0 Dec 25 09:51 README.txt
+ #-rw-rw-r-- 1 amir amir 0 Dec 26 05:06 test.c
+
+ #img:
+ #total 0
+ #-rw-rw-r-- 1 amir amir 0 Dec 25 09:51 hero.png
+ #-rw-rw-r-- 1 amir amir 0 Dec 25 09:51 player.png
+
+ #include:
+ #total 0
+ #-rw-rw-r-- 1 amir amir 0 Dec 25 09:50 player.h
+
+ #lib:
+ #total 0
+ #-rw-rw-r-- 1 amir amir 0 Dec 25 09:50 zlib.c
+
+ #src:
+ #total 0
+ #-rw-rw-r-- 1 amir amir 0 Dec 25 09:50 main.c
+ #-rw-rw-r-- 1 amir amir 0 Dec 25 09:50 player.c
 
 4. Search in "man ls" for an option to show only directory data so the command "ls _____ D*" should print only the word Doc
+ #amir@ubuntu:~/wildcards$ ls -a | grep [D*]
+ #Doc
 
