@@ -1,13 +1,32 @@
 Intro To Command Line Lab.
 Questions online: https://www.tocode.co.il/bundles/unix1/lessons/cmdlab
 
-1. Login to your UNIX account. How do you find:
+1. Login to your UNIX account. 
+How do you find:
   - your current shell?
   - your default shell?
   - a list of all shells currently installed on the machine?
 
+
+
+Default Shell is Bash.
+Current Shell is Bash.
+List of all Shells: sh, dash, bash, rbash
+
+
 2. View the file /etc/passwd on your machine with the command "cat /etc/passwd". Then read about the file in "man 5 passwd". What information is held in the file? What are the fields in each line?
+
+
+The information held in the file is to display all information for all Users\accounts that exist in the system. Each line includes 7 fields with different details on the users.
+
 
 3. In Unix, the /etc folder holds configuration files. Display all files in "/etc" folder ordered by file size (Hint: search in "man ls")
 
+  
+ls /etc -S
+
+
 4. Print current date/time formatted as: "Sun 21/03/2010, 14:30". Hint: read "man date" and search for the correct format string.
+
+
+date +%a,%d/%m/%y,%R
