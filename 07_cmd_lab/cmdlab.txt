@@ -8,15 +8,22 @@ How do you find:
   - a list of all shells currently installed on the machine?
 
 
-����� ����� ����� ��� bash ��� ���� ������ �������. ����� ������� ������ :sh, dash, bash, rbash
+
+Default Shell is Bash.
+Current Shell is Bash.
+List of all Shells: sh, dash, bash, rbash
+
+
 2. View the file /etc/passwd on your machine with the command "cat /etc/passwd". Then read about the file in "man 5 passwd". What information is held in the file? What are the fields in each line?
 
 
- ���� ����� ��� ����� ��� ���� �� ������ ���� passwd. ����� ������ �� ��� ���� �� ��� ������� ������ ��� ���� ����� 7 ���� �� ����� ����� �� ��������
+The information held in the file is to display all information for all Users\accounts that exist in the system. Each line includes 7 fields with different details on the users.
+
 
 3. In Unix, the /etc folder holds configuration files. Display all files in "/etc" folder ordered by file size (Hint: search in "man ls")
 
-  ls /etc -S
+  
+ls /etc -S
 
 
 4. Print current date/time formatted as: "Sun 21/03/2010, 14:30". Hint: read "man date" and search for the correct format string.
