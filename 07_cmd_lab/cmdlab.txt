@@ -3,11 +3,34 @@ Questions online: https://www.tocode.co.il/bundles/unix1/lessons/cmdlab
 
 1. Login to your UNIX account. How do you find:
   - your current shell?
-  - your default shell?
-  - a list of all shells currently installed on the machine?
+answer:  bash (by using "echo %0" command)
 
-2. View the file /etc/passwd on your machine with the command "cat /etc/passwd". Then read about the file in "man 5 passwd". What information is held in the file? What are the fields in each line?
+  - your default shell?
+answer:  bash (is the default shell in linux)
+
+  - a list of all shells currently installed on the machine?
+ answer: 	/bin/sh
+			/bin/bash
+			/bin/dash
+			/bin/rbash
+		(by using "cat /etc/shells" command)	
+		
+2. View the file /etc/passwd on your machine with the command "cat /etc/passwd". Then read about the file in "man 5 passwd". What information is held in the file?
+	What are the fields in each line?
+ 
+answer: the "man 5 passwd" command give information on the /etc/passwd file. in this file we have all the user account information.
+Each line of the file describes a single user, and contains seven colon-separated fields:
+login name : password : User ID : Group ID : user name or comment filed : home directory : command interpreter
+for example : syona:x:1000:1000:linux_course,,,:/home/syona:/bin/bash
+
+ 
 
 3. In Unix, the /etc folder holds configuration files. Display all files in "/etc" folder ordered by file size (Hint: search in "man ls")
+answer: ls -S /etc
 
 4. Print current date/time formatted as: "Sun 21/03/2010, 14:30". Hint: read "man date" and search for the correct format string.
+answer:
+the commands are:
+	TODAY=$(date +"%a %d/%m/%Y, %H:%M")
+	echo $TODAY
+
