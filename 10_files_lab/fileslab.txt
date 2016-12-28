@@ -7,8 +7,14 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
   - human.h, monster.h
   - .highscore
 
-Write here the commands you used:
+Write here the commands you used
 
+
+answer:
+		mkdir lab
+		cd lab
+		touch a.out, hero.c, enemy.c, game.c, main.c human.h, monster.h .highscore
+		
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
   - Misc
@@ -16,22 +22,46 @@ Write here the commands you used:
 
 Write here the commands you used:
 
+answer:
+	cd lab
+	mkdir Music Misc Drivers
+
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
 
+answer:	cp /etc/passwd Misc
+		cp /etc/passwd Music
+		cp /etc/passwd Drivers
+		
+		
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
 
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
 
+answer:  	we cant create a directory if we already created a file with the same name in the sane place (for example under lab directory), 
+			and we'll get this error: "mkdir: cannot create directory ‘myinfo’: File exists"
+			we can do this if we'll create the folder in another place in the tree and then do a copy to the file that cureently exsit in another place to be under it.
+			the commands: 
+			1. under lab create a file: "touch my info"
+			2. create tmp folder and create under it a folder name myinfo: "mkdir tmp"; "cd tmp"; "mkdir myinfo"; 
+			3. copy the file into this folder: "cp ../myinfo myinfo"
+			4. validate it by using tree command
+
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+answer: 
+		cp main.c game.c enemy.c hero.c game.c Music/
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
 
+answer:
+	cp -var Music Drivers
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+answer: 
+rm -r Drivers
