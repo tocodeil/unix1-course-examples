@@ -2,14 +2,27 @@
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
 
-  - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
+ Answer: /wildcards/src$ chmod a=r ,ain.c 
+- change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
 
-  - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
+ Answer: chmod 562 include/player.h
+ - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
 
-  - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+  Answer: chmod 600 *
+- change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+
+ Answer: chmod -R 777 lib
+
 
 2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+
+
+Answer: Chmod 000 secret, rm secret. "remove write-protected regular empty file 'secret'?" 'Y'. rm test - Yes -I can delete both!
+
 
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
 
 
+
+
+Answer: Umask is changing the settings of file mode permissions for new or old files. umask 772 -> Touch test 
