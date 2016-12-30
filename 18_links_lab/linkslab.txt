@@ -7,14 +7,17 @@ Preparation: Perform the following  (no need to write the commands you used):
 1. Perform the following and write the commands you used, from within links directory:
 
   - Create a symbolic link named file3 that points to "file1"
-  Answer: 
+  Answer: ln -s file1 file3
 
   - Create a hard link named file4 that points to "file2"
-  Answer: 
+  Answer: ln file2 file4
 
   - Create a new directory named "tmp" in your home folder:
-  Answer:
+  Answer: from home directory: mkdir tmp
 
 2. Move "file3" to the new "~/tmp" directory you just created. Can you still use it to see the original "file1" ? Why not? How would you create a symbolic link that would survive the transfer to ~/tmp ?
+I cannot see it
+I could use: ln -s $(realpath file1) file3
 
 3. How can you tell that "file2" and "file4" refer to the same file?
+ln -li file2 file4
