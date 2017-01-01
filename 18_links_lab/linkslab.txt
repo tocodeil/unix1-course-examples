@@ -8,13 +8,19 @@ Preparation: Perform the following  (no need to write the commands you used):
 
   - Create a symbolic link named file3 that points to "file1"
   Answer: 
-
+	sudo ln -s file1 file3
   - Create a hard link named file4 that points to "file2"
   Answer: 
-
+	sudo ln file2 file4
   - Create a new directory named "tmp" in your home folder:
   Answer:
+  mkdir tmp
 
 2. Move "file3" to the new "~/tmp" directory you just created. Can you still use it to see the original "file1" ? Why not? How would you create a symbolic link that would survive the transfer to ~/tmp ?
+	sudo mv !/links/file3 ~/tmp
+	-	NO (broken link)
+	sudo ln -s $(realpath ~/links/file1) file3
+	
 
 3. How can you tell that "file2" and "file4" refer to the same file?
+	ls -ls -->have same inode number
