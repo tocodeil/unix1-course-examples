@@ -1,17 +1,19 @@
 Use grep to print only the lines from "input" for which:
 
 1. There is a binary number in the line
+	cat input |grep -a [0-9]
 
 2. There is an even binary number in the line
-
+	cat input |grep -a *[0-9]
 3. Line includes a hexadecimal number
-
+	cat input |grep '[xNN]'
 4. Line starts with a lowercase letter
-
+	cat input |grep ^[a-z]
 5. Line is not empty
-
+	cat input|grep -v -e '^$'
 6. Line starts with a lowercase letter and ends in a number
-
+	cat input |grep ^[a-z] $[0-9]
 7. Line is longer than 50 characters
-
+	cat input |grep -e '[^\]\{50,\}'
 8. Line is of an even length
+	cat input |grep grep -v '^\(..\)\+$
