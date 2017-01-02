@@ -14,4 +14,4 @@ user name or comment field, user home directory, optional user command interpret
 I used the following command: ls -l -S /etc
 
 4. Print current date/time formatted as: "Sun 21/03/2010, 14:30". Hint: read "man date" and search for the correct format string. -->
-I used the following command: date "%a %d/%m/%Y, %R"
+I used the following command: date +"%a %d/%m/%Y, %R"
