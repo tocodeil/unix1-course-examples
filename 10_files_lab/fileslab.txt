@@ -8,6 +8,9 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
   - .highscore
 
 Write here the commands you used:
+cd /home/liat
+mkdir lab
+touch lab/a.out lab/hero.c lab/enemy.c lab/game.c lab/main.c lab/human.h lab/monster.h lab/.highscore
 
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
@@ -15,23 +18,36 @@ Write here the commands you used:
   - Drivers
 
 Write here the commands you used:
+cd lab
+mkdir Music Misc Drivers
 
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
+cp /etc/passwd Music
+cp /etc/passwd Misc
+cp /etc/passwd Drivers
 
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
 
+I used the following command to create and edit myinfo file:
+pico myinfo
+
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
+It didn't work, cause I got an error that file myinfo exists.
+I succeeded to create myinfo file inside myinfo directory. It can be possible if the directory is created before the file.
 
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+mv -t Music main.c game.c enemy.c hero.c
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
-
+mv Music Drivers
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+Couldn't use rmdir to delete directory Drivers, cause the directory is not empty.
+I can delete non empty directory by using the command: rm -r Drivers
