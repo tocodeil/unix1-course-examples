@@ -1,20 +1,111 @@
 1. Write command lines to find using "find":
 
   -. All files owned by yourself in /tmp folder
+  
+  all files  in /tmp/(2 users : maxim & test)
+  
+  maxim@maxim-virtual-machine:/tmp$ ls -l
+total 12
+-rw-rw-r-- 1 test  test     0 Jan  4 09:48 file1.test
+-rw-rw-r-- 1 test  test     0 Jan  4 09:48 file2.test
+drwx------ 3 root  root  4096 Jan  4 09:40 systemd-private-07794fef300641d3a64d3c789b0d3e70-colord.service-QhXkz8
+drwx------ 3 root  root  4096 Jan  4 09:40 systemd-private-07794fef300641d3a64d3c789b0d3e70-rtkit-daemon.service-cEkNto
+drwx------ 3 root  root  4096 Jan  4 09:39 systemd-private-07794fef300641d3a64d3c789b0d3e70-systemd-timesyncd.service-JiwDox
+-rw-rw-r-- 1 maxim maxim    0 Jan  4 09:42 test1.maxim
+-rw-rw-r-- 1 maxim maxim    0 Jan  4 09:42 test2.maxim
+-rw-rw-r-- 1 maxim maxim    0 Jan  4 09:42 test.maxim
+
+
+
+  maxim@maxim-virtual-machine:/tmp$ find . -exec ls -l \; | grep $(whoami) | uniq
+  
+  ** I don't understabd why it print all 4 times, and why "uniq" is not working.
+  
+  maxim@maxim-virtual-machine:/tmp$ find . -exec ls -l \; | grep $(whoami) | uniq -u
+find: ‘./systemd-private-07794fef300641d3a64d3c789b0d3e70-rtkit-daemon.service-cEkNto’: Permission denied
+-rw-rw-r-- 1 maxim maxim 11888 Jan  4 12:24 1.txt
+-rw-rw-r-- 1 maxim maxim     2 Jan  4 10:02 a.txt
+-rw-rw-r-- 1 maxim maxim     2 Jan  4 10:08 a.txt.bak
+-rw-rw-r-- 1 maxim maxim     2 Jan  4 10:02 b.txt
+-rw-rw-r-- 1 maxim maxim     2 Jan  4 10:08 b.txt.bak
+-rw-rw-r-- 1 maxim maxim     2 Jan  4 10:02 c.txt
+-rw-rw-r-- 1 maxim maxim     2 Jan  4 10:08 c.txt.bak
+-rw-rw-r-- 1 maxim maxim     0 Jan  4 09:42 test1.maxim
+-rw-rw-r-- 1 maxim maxim     0 Jan  4 09:42 test2.maxim
+-rwxrwxrwx 1 maxim maxim     0 Jan  4 09:42 test.maxim
+
+It prints all X4 times
+  
+  
 
   -. All files and directories not owned by you in /tmp folder
+  
+  user root,test
 
+ -rw-rw-r-- 1 test  test      0 Jan  4 09:48 file1.test
+-rw-rw-r-- 1 test  test      0 Jan  4 09:48 file2.test
+drwx------ 3 root  root   4096 Jan  4 09:40 systemd-private-07794fef300641d3a64d3c789b0d3e70-colord.service-QhXkz8
+drwx------ 3 root  root   4096 Jan  4 09:40 systemd-private-07794fef300641d3a64d3c789b0d3e70-rtkit-daemon.service-cEkNto
+drwx------ 3 root  root   4096 Jan  4 09:39 systemd-private-07794fef300641d3a64d3c789b0d3e70-systemd-timesyncd.service-JiwDox
+ 
+Also prints 4 times =(
+
+  
   -. All files, folders and links in your home folder whose name ends with a ".c"
+  
+  maxim@maxim-virtual-machine:~$ find . -name "*.c"
+./wildcards/src/main.c
+./wildcards/src/player.c
+./wildcards/Doc/test.c
+./test1.c
+./lab/test2.c
+
 
   -. All files in your home folder whose name starts with an "a", "e", "i", "o" or "u"
+  
+  maxim@maxim-virtual-machine:~$ find . * | grep "^[a,e,i,o,u]"
+a.test
+e.test
+ipconfig
+o.test
+u.test
 
-  -. All files in your home directory whose size is above 10MB
+    -. All files in your home directory whose size is above 10MB
+  
+  maxim@maxim-virtual-machine:~$ find . -size +10M
+./il.archive.ubuntu.com_ubuntu_dists_xenial_universe_binary-amd64_Packages
+
 
   -. All files in your home directory which were modified in the past 2 days
+  
+  maxim@maxim-virtual-machine:~$ find . -mtime -2
+.
+./.bash_history
+./time.test
+
 
   -. All files in your home directory which were not modified for over a month, and size is above 10MB.
 
-2. Create a hard link to a file of your choice and put it in a subdirectory under your home folder. How can you use "find" to locate the hard link given the original file?
+  maxim@maxim-virtual-machine:~$ find . -mtime -30 -size +10M
+./il.archive.ubuntu.com_ubuntu_dists_xenial_universe_binary-amd64_Packages
+
+
+2. Create a hard link to a file of your choice and put it in a subdirectory under your home folder. 
+How can you use "find" to locate the hard link given the original file?
+
+maxim@maxim-virtual-machine:~$ find . -type f -links +1
+./hardlink
+./secret/log
+./lab/links/file2
+./tmp/file5
+
+OR
+
+maxim@maxim-virtual-machine:~$ find . -type f -links 2
+./hardlink
+./secret/log
+
+
 
 3. Create 3 empty text files a.txt, b.txt and c.txt. Use a single find command to:
   - copy a.txt to a.txt.backup
@@ -22,3 +113,28 @@
   - copy c.txt to c.txt.backup
 What was the command?  
 
+maxim@maxim-virtual-machine:/tmp$ touch a.txt b.txt c.txt
+maxim@maxim-virtual-machine:/tmp$ echo a > a.txt && echo b > b.txt && echo c > c.txt
+maxim@maxim-virtual-machine:/tmp$ cat a.txt b.txt c.txt
+a
+b
+c
+
+maxim@maxim-virtual-machine:/tmp$ find . -name "*.txt" -exec cp {} "{}".bak \;
+
+maxim@maxim-virtual-machine:/tmp$ ls -l
+total 36
+-rw-rw-r-- 1 maxim maxim    2 Jan  4 10:02 a.txt
+-rw-rw-r-- 1 maxim maxim    2 Jan  4 10:08 a.txt.bak
+-rw-rw-r-- 1 maxim maxim    2 Jan  4 10:02 b.txt
+-rw-rw-r-- 1 maxim maxim    2 Jan  4 10:08 b.txt.bak
+-rw-rw-r-- 1 maxim maxim    2 Jan  4 10:02 c.txt
+-rw-rw-r-- 1 maxim maxim    2 Jan  4 10:08 c.txt.bak
+-rw-rw-r-- 1 test  test     0 Jan  4 09:48 file1.test
+-rw-rw-r-- 1 test  test     0 Jan  4 09:48 file2.test
+drwx------ 3 root  root  4096 Jan  4 09:40 systemd-private-07794fef300641d3a64d3c789b0d3e70-colord.service-QhXkz8
+drwx------ 3 root  root  4096 Jan  4 09:40 systemd-private-07794fef300641d3a64d3c789b0d3e70-rtkit-daemon.service-cEkNto
+drwx------ 3 root  root  4096 Jan  4 09:39 systemd-private-07794fef300641d3a64d3c789b0d3e70-systemd-timesyncd.service-JiwDox
+-rw-rw-r-- 1 maxim maxim    0 Jan  4 09:42 test1.maxim
+-rw-rw-r-- 1 maxim maxim    0 Jan  4 09:42 test2.maxim
+-rwxrwxrwx 1 maxim maxim    0 Jan  4 09:42 test.maxim
