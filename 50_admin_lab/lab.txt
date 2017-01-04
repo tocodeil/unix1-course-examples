@@ -24,6 +24,14 @@ https://m.do.co/c/aeaf5e4ea3ae
 
 6. The file sshd_config defines which users can login via ssh and in what way. Define SSH keys for user root and modify sshd_config so user root can only login with her SSH keys. What files did you modify?
 
+7. Create a new group named "ninja" and a new folder named "/opt/ninja/secret". Copy all files and folders from /usr/share/man to /opt/ninja/secret.
+
+8. What's the size of /opt/ninja/secret? What command did you use to find it?
+
+9. What permissions should you set on folder /opt/ninja/secret so that only users from group ninja could see the files inside?
+
+10. What permissions should you set on folder /opt/ninja so that only users from group ninja could create new files and folders there?
+
 ## Installing Software
 
 1. Which software repositories are defined for your machine by default? In which file is the information saved?
