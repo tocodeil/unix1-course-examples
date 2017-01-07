@@ -1,3 +1,10 @@
 ll="ls -l"
 rm="rm -i"
 cp="cp -i"
+
+alias count_files="ls -1 | wc -l"
+alias bysize="ls -lS"
+alias ff="find . -name '*$1*'"
+alias lsf="ls -d ./*/"
+alias lsd="ls -p | grep -v /"
+alias lsg="ls -la | sort -r"
