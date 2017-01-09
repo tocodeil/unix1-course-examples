@@ -1,4 +1,4 @@
-Files and Directories Lab
+Files and Directories Lab - Amir Meiron
 Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
 
 1. Create a new folder named "lab" in your home directory and inside create the files:
@@ -8,30 +8,67 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
   - .highscore
 
 Write here the commands you used:
-
+>cd
+>mkdir lab
+>cd lab
+>touch a.out hero.c enemy.c game.c main.c human.h monster.h .highscore
+>ls -a 
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
   - Misc
   - Drivers
 
 Write here the commands you used:
-
+> mkdir Music Misc Drivers 
+> ls 
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
+> cp /etc/passwd /home/amir/lab/Music
+> cp /etc/passwd /home/amir/lab/Misc
+> cp /etc/passwd /home/amir/lab/Drivers
 
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
+> touch myinfo
+> vi myinfo
+	>"i"
+	> new for me to learn
+	> free
+	> can be confgured according to one's needs
+	>"esc" ":wq!"
+> cat myinfo
 Now create a new directory named "myinfo" and move the file into it.
 
-Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
+Did it work? no
+Why? the directiry has already a file with the same name
+Can you create a file "myinfo" inside a directory named "myinfo" - yes
+How ?
+u need to create this directory in alter location
+copy the file into it
+copy entire directory to the needed location
+
+> cd /home/amir/
+> mkdir myinfo
+> cp /home/amir/lab/myinfo /home/amir/myinfo/
+> rm /home/amir/lab/myinfo
+> mv /home/amir/myinfo /home/amir/lab/
+
+
 
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+> mv main.c game.c enemy.c hero.c /home/amir/lab/Music/
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
 
+> cd /home/amir/lab/
+> mv /home/amir/lab/Music /home/amir/lab/Drivers/
 
-7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+7. Try to use "rmdir" to delete directory "Drivers":
+Did it work? no 
+Why? "directory not empty
+How can you delete directory "Drivers" ? use "forse" 
+> rm -r / rm -rf
