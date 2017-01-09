@@ -4,17 +4,98 @@ Preparation: Perform the following  (no need to write the commands you used):
   - cd to it
   - inside the directory create 2 text files named "file1" and "file2". Write the names of some things you like in file "file1", and some things you don't like in file "file2"
 
+  maxim@maxim-virtual-machine:~/lab$ mkdir links
+maxim@maxim-virtual-machine:~/lab$ cd links
+maxim@maxim-virtual-machine:~/lab/links$ ls
+maxim@maxim-virtual-machine:~/lab/links$ touch file1 file2
+maxim@maxim-virtual-machine:~/lab/links$ echo c++ java python >> file1
+maxim@maxim-virtual-machine:~/lab/links$ cat file1
+c++ java python
+maxim@maxim-virtual-machine:~/lab/links$ echo pascal ruby  >> file2
+maxim@maxim-virtual-machine:~/lab/links$ cat file2
+pascal ruby
+  
 1. Perform the following and write the commands you used, from within links directory:
 
   - Create a symbolic link named file3 that points to "file1"
   Answer: 
 
+  maxim@maxim-virtual-machine:~/lab/links$ ln -s file1 file3
+maxim@maxim-virtual-machine:~/lab/links$ ls -l
+total 8
+-rw-rw-r-- 1 maxim maxim 16 Dec 27 10:36 file1
+-rw-rw-r-- 1 maxim maxim 12 Dec 27 11:02 file2
+lrwxrwxrwx 1 maxim maxim  5 Dec 27 11:06 file3 -> file1
+
   - Create a hard link named file4 that points to "file2"
   Answer: 
+
+  maxim@maxim-virtual-machine:~/lab/links$ ln  file2 file4
+maxim@maxim-virtual-machine:~/lab/links$ ls -l
+total 12
+-rw-rw-r-- 1 maxim maxim 16 Dec 27 10:36 file1
+-rw-rw-r-- 2 maxim maxim 12 Dec 27 11:02 file2
+lrwxrwxrwx 1 maxim maxim  5 Dec 27 11:06 file3 -> file1
+-rw-rw-r-- 2 maxim maxim 12 Dec 27 11:02 file4
+
 
   - Create a new directory named "tmp" in your home folder:
   Answer:
 
-2. Move "file3" to the new "~/tmp" directory you just created. Can you still use it to see the original "file1" ? Why not? How would you create a symbolic link that would survive the transfer to ~/tmp ?
+maxim@maxim-virtual-machine:~$ mkdir tmp
+  
+2. Move "file3" to the new "~/tmp" directory you just created. 
+Can you still use it to see the original "file1" ? Why not? 
+How would you create a symbolic link that would survive the transfer to ~/tmp ?
+
+maxim@maxim-virtual-machine:~/lab/links$ mv file3 ~/tmp/
+maxim@maxim-virtual-machine:~/lab/links$ cd ~/tmp/
+maxim@maxim-virtual-machine:~/tmp$ cat file3
+cat: file3: No such file or directory
+
+
+maxim@maxim-virtual-machine:~/lab/links$ ln -s /home/maxim/lab/links/file1 new-fil1
+maxim@maxim-virtual-machine:~/lab/links$ ls -l
+total 12
+-rw-rw-r-- 1 maxim maxim 16 Dec 27 10:36 file1
+-rw-rw-r-- 2 maxim maxim 12 Dec 27 11:02 file2
+-rw-rw-r-- 2 maxim maxim 12 Dec 27 11:02 file4
+
+Absolute link:
+
+lrwxrwxrwx 1 maxim maxim 27 Dec 27 14:16 new-fil1 -> /home/maxim/lab/links/file1
+maxim@maxim-virtual-machine:~/lab/links$ mv new-fil1 ~/tmp/
+maxim@maxim-virtual-machine:~/lab/links$ cat ~/tmp/new-fil1
+c++ java python
+maxim@maxim-virtual-machine:~/lab/links$ cat file1
+c++ java python
+maxim@maxim-virtual-machine:~/lab/links$ echo new-line >> file1
+maxim@maxim-virtual-machine:~/lab/links$ cat file1
+c++ java python
+new-line
+maxim@maxim-virtual-machine:~/lab/links$ cat ~/tmp/new-fil1
+c++ java python
+new-line
+
 
 3. How can you tell that "file2" and "file4" refer to the same file?
+
+hard lnk
+maxim@maxim-virtual-machine:~/lab/links$ ls -li
+total 12
+134266 -rw-rw-r-- 1 maxim maxim 25 Dec 27 14:17 file1
+134274 -rw-rw-r-- 2 maxim maxim 12 Dec 27 11:02 file2
+134274 -rw-rw-r-- 2 maxim maxim 12 Dec 27 11:02 file4
+
+maxim@maxim-virtual-machine:~/lab/links$ echo final-line >> file2
+maxim@maxim-virtual-machine:~/lab/links$ cat file2
+pascal ruby
+final-line
+
+maxim@maxim-virtual-machine:~/lab/links$ cat ~/tmp/file4
+pascal ruby
+final-line
+
+
+
+
