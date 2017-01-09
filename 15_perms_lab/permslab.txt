@@ -2,14 +2,61 @@
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
 
+  chmod a=r src/main.c
+
   - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
 
+	chmod 562 include/player.h
+	tocode@tocode-VirtualBox:~/wildcards$ ll include/player.h
+	-r-xrw--w- 1 tocode tocode 0 Dec 24 14:18 include/player.h*
+  
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
+	
+	chmod 600 Doc/*
+tocode@tocode-VirtualBox:~/wildcards$ ll
+total 28
+drwxrwxr-x  7 tocode tocode 4096 Dec 24 14:19 ./
+drwxr-xr-x 20 tocode tocode 4096 Dec 30 15:11 ../
+drwxrwxr-x  2 tocode tocode 4096 Dec 24 14:18 Doc/
+drwxrwxr-x  2 tocode tocode 4096 Dec 24 15:01 img/
+drwxrwxr-x  2 tocode tocode 4096 Dec 24 14:18 include/
+drwxrwxr-x  2 tocode tocode 4096 Dec 24 14:18 lib/
+drwxrwxr-x  2 tocode tocode 4096 Dec 24 14:18 src/
+tocode@tocode-VirtualBox:~/wildcards$ ll Doc/
+total 8
+drwxrwxr-x 2 tocode tocode 4096 Dec 24 14:18 ./
+drwxrwxr-x 7 tocode tocode 4096 Dec 24 14:19 ../
+-rw------- 1 tocode tocode    0 Dec 24 14:18 README.txt
+-rw------- 1 tocode tocode    0 Dec 24 14:18 test.c
 
+  
   - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
 
+   chmod -R 777 lib
+tocode@tocode-VirtualBox:~/wildcards$ ll
+total 28
+drwxrwxr-x  7 tocode tocode 4096 Dec 24 14:19 ./
+drwxr-xr-x 20 tocode tocode 4096 Dec 30 15:11 ../
+drwxrwxr-x  2 tocode tocode 4096 Dec 24 14:18 Doc/
+drwxrwxr-x  2 tocode tocode 4096 Dec 24 15:01 img/
+drwxrwxr-x  2 tocode tocode 4096 Dec 24 14:18 include/
+drwxrwxrwx  2 tocode tocode 4096 Dec 24 14:18 lib/
+drwxrwxr-x  2 tocode tocode 4096 Dec 24 14:18 src/
+tocode@tocode-VirtualBox:~/wildcards$ ll lib/
+total 8
+drwxrwxrwx 2 tocode tocode 4096 Dec 24 14:18 ./
+drwxrwxr-x 7 tocode tocode 4096 Dec 24 14:19 ../
+-rwxrwxrwx 1 tocode tocode    0 Dec 24 14:18 zlib.c*
+  
 2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+
+Yes, it possible because we have admin permissions
 
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
 
-
+umask 773
+tocode@tocode-VirtualBox:~/wildcards$ umask -S
+u=,g=,o=r
+tocode@tocode-VirtualBox:~/wildcards$ touch test
+tocode@tocode-VirtualBox:~/wildcards$ ll test
+-------r-- 1 tocode tocode 0 Dec 30 15:34 test
