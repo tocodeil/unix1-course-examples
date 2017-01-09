@@ -2,14 +2,70 @@
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
 
+maxim@maxim-virtual-machine:~/wildcards/src$ chmod  444 main.c
+maxim@maxim-virtual-machine:~/wildcards/src$ ls -l main.c
+-r--r--r-- 1 maxim maxim 0 Dec 25 09:55 main.c
+
   - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
+  misktake on question: r-xrw--r-
+ �-r-xrw-r-- if like this:
+maxim@maxim-virtual-machine:~/wildcards/include$ ls -l
+total 0
+-r-xrw-r-- 1 maxim maxim 0 Dec 25 09:55 player.h
+
 
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
 
+maxim@maxim-virtual-machine:~/wildcards/Doc$ chmod 600 README.txt && chmod 600 test.c
+maxim@maxim-virtual-machine:~/wildcards/Doc$ ls -l
+total 0
+-rw------- 1 maxim maxim 0 Dec 25 09:56 README.txt
+-rw------- 1 maxim maxim 0 Dec 25 09:56 test.c
+
   - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+  
+  maxim@maxim-virtual-machine:~/wildcards$ chmod -R 777 lib/
+  
+  maxim@maxim-virtual-machine:~/wildcards$ ls -l
+total 24
+drwxrwxr-x 2 maxim maxim 4096 Dec 25 10:30 1
+drwxrwxr-x 2 maxim maxim 4096 Dec 26 14:24 Doc
+drwxrwxr-x 2 maxim maxim 4096 Dec 25 10:24 img
+drwxrwxr-x 2 maxim maxim 4096 Dec 26 14:14 include
+drwxrwxrwx 2 maxim maxim 4096 Dec 25 09:55 lib
+drwxrwxr-x 2 maxim maxim 4096 Dec 26 13:18 src
+maxim@maxim-virtual-machine:~/wildcards$ ls -l lib/zlib.c
+-rwxrwxrwx 1 maxim maxim 0 Dec 25 09:55 lib/zlib.c
+
 
 2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
 
+maxim@maxim-virtual-machine:~/wildcards$ chmod 000 test/secret
+maxim@maxim-virtual-machine:~/wildcards$ ls -l test/secret
+---------- 1 maxim maxim 0 Dec 26 14:34 test/secret
+
+maxim@maxim-virtual-machine:~/wildcards/test$ rm secret
+rm: remove write-protected regular empty file 'secret'?
+maxim@maxim-virtual-machine:~/wildcards/test$ ls
+secret
+CANNOT DELETE, write-protected.
+
+maxim@maxim-virtual-machine:~/wildcards$ rm -r test/
+rm: remove write-protected regular empty file 'test/secret'?
+rm: cannot remove 'test/': Directory not empty
+
+write protected file inside, cannot delete
+
+
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
 
+UMASK is use to determine the file permission for newly created files
+
+maxim@maxim-virtual-machine:~/wildcards/test2$ umask 772
+maxim@maxim-virtual-machine:~/wildcards/test2$ touch test.final
+maxim@maxim-virtual-machine:~/wildcards/test2$ ls -l
+total 0
+-rw-r--r-- 1 maxim maxim 0 Dec 26 15:31 test5.file
+-rwxrwxrwx 1 maxim maxim 0 Dec 26 15:24 test.file
+-------r-- 1 maxim maxim 0 Dec 26 15:31 test.final
 
