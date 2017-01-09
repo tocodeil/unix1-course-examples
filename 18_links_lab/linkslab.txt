@@ -4,17 +4,89 @@ Preparation: Perform the following  (no need to write the commands you used):
   - cd to it
   - inside the directory create 2 text files named "file1" and "file2". Write the names of some things you like in file "file1", and some things you don't like in file "file2"
 
+  
 1. Perform the following and write the commands you used, from within links directory:
 
   - Create a symbolic link named file3 that points to "file1"
   Answer: 
 
+  ln -s file1 file3
+tocode@tocode-VirtualBox:~/wildcards/links$ ll file3
+lrwxrwxrwx 1 tocode tocode 5 Dec 30 19:44 file3 -> file1
+
   - Create a hard link named file4 that points to "file2"
   Answer: 
 
+ln file1 file4
+tocode@tocode-VirtualBox:~/wildcards/links$ ll
+total 20
+drwxrwxr-x 2 tocode tocode 4096 Dec 30 19:46 ./
+drwxrwxr-x 8 tocode tocode 4096 Dec 30 19:39 ../
+-rw-rw-rw- 2 tocode tocode   25 Dec 30 19:42 file1
+-rw-rw-rw- 1 tocode tocode    7 Dec 30 19:42 file2
+lrwxrwxrwx 1 tocode tocode    5 Dec 30 19:44 file3 -> file1
+-rw-rw-rw- 2 tocode tocode   25 Dec 30 19:42 file4
+
+  
   - Create a new directory named "tmp" in your home folder:
   Answer:
 
+  tocode@tocode-VirtualBox:~/wildcards$ cd tmp/
+tocode@tocode-VirtualBox:~/wildcards/tmp$ ll
+total 8
+drwxrwxrwx 2 tocode tocode 4096 Dec 30 19:49 ./
+drwxrwxr-x 9 tocode tocode 4096 Dec 30 19:49 ../
+lrwxrwxrwx 1 tocode tocode    5 Dec 30 19:44 file3 -> file1
+tocode@tocode-VirtualBox:~/wildcards/tmp$ cat file3
+cat: file3: No such file or directory
+
+
 2. Move "file3" to the new "~/tmp" directory you just created. Can you still use it to see the original "file1" ? Why not? How would you create a symbolic link that would survive the transfer to ~/tmp ?
 
+no, need to create symbolic links with absolute path
+
+tocode@tocode-VirtualBox:~/wildcards/links$ ln -s $(realpath file1) file3
+tocode@tocode-VirtualBox:~/wildcards/links$ ll
+total 20
+drwxrwxr-x 2 tocode tocode 4096 Dec 30 19:54 ./
+drwxrwxr-x 9 tocode tocode 4096 Dec 30 19:49 ../
+-rw-rw-rw- 2 tocode tocode   25 Dec 30 19:42 file1
+-rw-rw-rw- 1 tocode tocode    7 Dec 30 19:42 file2
+lrwxrwxrwx 1 tocode tocode   34 Dec 30 19:54 file3 -> /home/tocode/wildcards/links/file1
+-rw-rw-rw- 2 tocode tocode   25 Dec 30 19:42 file4
+tocode@tocode-VirtualBox:~/wildcards/links$ mv file3 /home/tocode/wildcards/tmp/
+tocode@tocode-VirtualBox:~/wildcards/links$ cat /home/tocode/wildcards/tmp/file3
+python
+java
+shell script
+
+rm file1
+tocode@tocode-VirtualBox:~/wildcards/links$ cat /home/tocode/wildcards/tmp/file3
+cat: /home/tocode/wildcards/tmp/file3: No such file or directory
+
+no, we cannot see file3 after file1 was deleted
+
+tocode@tocode-VirtualBox:~/wildcards/links$ mv file4 ~/wildcards/tmp/
+tocode@tocode-VirtualBox:~/wildcards/links$ ll
+total 12
+drwxrwxr-x 2 tocode tocode 4096 Dec 30 20:01 ./
+drwxrwxr-x 9 tocode tocode 4096 Dec 30 19:49 ../
+-rw-rw-rw- 1 tocode tocode    7 Dec 30 19:42 file2
+tocode@tocode-VirtualBox:~/wildcards/links$ cat ~/wildcards/t
+test  tmp/
+tocode@tocode-VirtualBox:~/wildcards/links$ cat ~/wildcards/tmp/file4
+python
+java
+shell script
+
+yes, we can see file4 - becuse of hard links.
+file2 is still ok , without any error
+
 3. How can you tell that "file2" and "file4" refer to the same file?
+
+they have the same ID (1)
+
+tocode@tocode-VirtualBox:~/wildcards/links$ ll
+-rw-rw-rw- **1** tocode tocode    7 Dec 30 19:42 file2
+tocode@tocode-VirtualBox:~/wildcards/links$ ll ~/wildcards/tmp/file4
+-rw-rw-rw- **1** tocode tocode 25 Dec 30 19:42 /home/tocode/wildcards/tmp/file4
