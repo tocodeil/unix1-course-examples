@@ -5,25 +5,44 @@ https://www.tocode.co.il/bundles/unix1/lessons/globlab
 
   1. All files whose name starts with a lowercase letter
   Answer: 
+  
+	ls -d [a-z]*
 
   2. All files whose name starts with an uppercase letter
   Answer:
 
+	ls -d [A-Z]*
+  
   3. All files whose name ends in an "a", "e", "i", "o" or "u"
   Answer:
 
+	ls -d *[a,e,i,o,u]
+  
   4. All files whose name DOES NOT end in an "a", "e", "i", "o" or "u"
   Answer:
 
+	ls -d *[!a,e,i,o,u]
+  
   5. All files with extension ".c" that are in a folder named "src"
   Answer:
+	
+	ls ./src/*.c
 
   6. All files with extension ".c" under any folder
   Answer:
 
+    find . -name '*.c'
+	ls -R | grep '.*[.]c'
+  
+  
 2. Write a command that would delete all files ending with a ".png" under any subdirectory.
 
+	find . -name '*.png' -delete
+  
 3. The command "ls -l" can take the name of a file or directory and show details on them. From within "wildcards" folder run "ls -l [A-Z]*". What was printed? Why?
+	
+	it printed it from Doc folder beacuse it math [A-Z] (start with capital D).
 
 4. Search in "man ls" for an option to show only directory data so the command "ls _____ D*" should print only the word Doc
 
+	ls -d D*
