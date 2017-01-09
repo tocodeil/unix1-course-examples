@@ -2,14 +2,28 @@
   - ll => ls -l
   - rm => rm -i
   - cp => cp -i
+  
+  
+    alias 	ll ="ls -l"
+	alias	rm ="rm -i"
+	alias	cp ="cp -i"
 
 2. How can you "install" all defined aliases into the current shell? How can you add them permenantly to all shells?
+	current shell - just create alias
+	To create an alias permanently add the alias to your .bashrc file
+	bash_aliases
 
 3. Add the following aliases into the aliases file you defined previously:
   - count_files => print the number of files in current directory
+	alias count_files=:ls |wc -l"
   - bysize => print files ordered by size
+	alias bysize="ls -S"
   - ff => search a file by partial name. For example running "ff ba" should print all files with "ba" in their name
+	alias ff="find . -name '*ba&'"
   - lsf => like "ls -l" but print only files
+	alias	lsf="ls -p |grep -v /"
   - lsd => like "ls -l" but print only directories
+	alias lsd="ls -d */"
   - lsg => like "ls -l" but print all directories first and then files
+	alias lsg="ls -la | sort -k 1"
 
