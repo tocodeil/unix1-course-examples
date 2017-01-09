@@ -8,6 +8,9 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
   - .highscore
 
 Write here the commands you used:
+	sudo mkdir lab
+	sudo touch a.out hero.c enemy.c game.c main.c human.h monster.h .highscore
+	
 
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
@@ -15,23 +18,39 @@ Write here the commands you used:
   - Drivers
 
 Write here the commands you used:
+	cd lab
+	sudo mkdir Music Misc Drivers
 
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
 
+	sudo cp /etc/passwd /home/lab/Music 
+	sudo cp /etc/passwd /homelab/Misc 
+	sudo cp /etc/passwd /home/lab/Drivers
+	
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
-
+	vi myinfo
+	mkdir myinfo
+	mkdir: cannot create directory ‘myinfo’: File exists
+ 
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
+	sudo rm myinfo
+	sudo mkdir myinfo
+	cd myinfo
+	touch myinfo
+
 
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+	sudo mv main.c game.c enemy.c hero.c /home/lab/Music
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
+	sudo mv /home/lab/Music /home/lab/Drivers
 
-
-7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+7. Try to use "rmdir" to delete directory "Drivers". Did it work? --> no
+	Why? How can you delete directory "Drivers" ? --> it contain files also, can be deleted by rm -r
