@@ -1,15 +1,45 @@
 1. Using the file structure in the current directory, write the commands that perform the following:
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
+	chmod a=r src/main.c 
 
   - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
-
+	chmod 564 include/player.h
+	
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
+	chmod u=rw ~/Doc/*
+	chmod g-rw ~/Doc/*
+	chmod o-x  ~/Doc/*
+	or chmod 600 ~/Doc/*
 
   - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
-
-2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+	sudo chmod -R 777 /lib
+	
+2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. 
+	mkdir test
+	touch secret
+	chmod 000 secret
+	
+	Can you delete the file secret? 
+	rm secret
+	rm: remove write-protected regular empty file 'secret'? y
+	--> YES
+	can you delete the folder test? why?
+	rm -R test
+	rm: remove write-protected regular empty file 'test/secret'? y
+	--> YES
 
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
+	
+	When user create a file or directory under Linux , he create it with a default set of permissions. 
+	In most case the system defaults may be open or relaxed for file sharing purpose. 
+	
+	The user file-creation mode mask (umask) is use to determine the file permission for newly created files. 
+	It can be used to control the default file permission for new files. 
+	It is a four-digit octal number. A umask can be set or expressed using
+	-	Symbolic values
+	-	Octal values
+
+	umask 772
 
 
