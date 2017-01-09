@@ -25,13 +25,28 @@ Now create a new directory named "myinfo" and move the file into it.
 
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
 
+
+
+mkdir: cannot create directory 'myinfor': file exists. I eventually did it by: mkdir "my info"
+
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+
+cp *.c Music
+
+
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
 
 
+cp -R Music Drivers
+
+
+
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+
+
+Directory isn't empty. Solution: rm-r Drivers
