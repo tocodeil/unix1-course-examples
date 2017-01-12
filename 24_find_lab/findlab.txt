@@ -1,24 +1,33 @@
 1. Write command lines to find using "find":
 
   -. All files owned by yourself in /tmp folder
+	find /tmp -maxpath 1 -type f -user $(whoami)
 
   -. All files and directories not owned by you in /tmp folder
+	find /tmp \! -user $(whoami)
 
   -. All files, folders and links in your home folder whose name ends with a ".c"
+	find $HOME -L -name "*.c"
 
   -. All files in your home folder whose name starts with an "a", "e", "i", "o" or "u"
+	find $HOME -type f -name "[aeiou]*"
 
   -. All files in your home directory whose size is above 10MB
+	find $HOME -type f -size +10M
 
   -. All files in your home directory which were modified in the past 2 days
-
+	find $HOME -type f -mtime -2
+	
   -. All files in your home directory which were not modified for over a month, and size is above 10MB.
+	find $HOME -type f -mtime +30 -size +10M
 
 2. Create a hard link to a file of your choice and put it in a subdirectory under your home folder. How can you use "find" to locate the hard link given the original file?
+	find $HOME -samefile /path/to/file 
 
 3. Create 3 empty text files a.txt, b.txt and c.txt. Use a single find command to:
   - copy a.txt to a.txt.backup
   - copy b.txt to b.txt.backup
   - copy c.txt to c.txt.backup
 What was the command?  
+find $HOME -type f -name "[abc].txt" -exec cp {} "{}".backup \;
 
