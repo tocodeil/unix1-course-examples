@@ -1,15 +1,19 @@
 1. Using the file structure in the current directory, write the commands that perform the following:
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
-
+$ chmod u=r,g=r,o=r src/main.c
   - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
-
+$ chmod 564 include/player.h
+Ofir>> shouldn't it be r-xrw-r--?
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
-
+$ chmod 600 Doc/*
   - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
-
+& chmod 777 lib lib/**
 2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+yes, I used (rm test/secret) and got a question if I'd like to delete write protected file. after that the directory got deleted with rm -d
+I'm guessing that it is due to the fact that I'm the owner of the file.
 
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
 
-
+umask sets the default permission values for newly created file or folders. 
+to set the default to 004, need to use the complement 662 ($ umask 662)
