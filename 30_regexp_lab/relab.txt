@@ -1,17 +1,25 @@
 Use grep to print only the lines from "input" for which:
 
 1. There is a binary number in the line
+	grep -E -w '[10]+' input.txt | grep -E -v '[10]+[),]'
 
 2. There is an even binary number in the line
-
+	grep -E -w '[10]*0' input.txt | grep -E -v '[10]*0[),]'
+	
 3. Line includes a hexadecimal number
+	grep -E -w -i '0*x*[1-9a-f]+' input.txt | grep -v '^1'
 
 4. Line starts with a lowercase letter
-
+	grep -E '^[a-z]+' input.txt
+	
 5. Line is not empty
+	grep -E '.+' input.txt
 
 6. Line starts with a lowercase letter and ends in a number
+	grep -E '^[a-z]+.*[0-9]$' input.txt
 
 7. Line is longer than 50 characters
+	grep -E '.{51,}' input.txt
 
 8. Line is of an even length
+	grep -E '^(..)*$' input.txt
