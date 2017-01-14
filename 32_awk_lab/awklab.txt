@@ -1,11 +1,12 @@
 1. Write an awk one-liner that prints the file "shells" with a blank line after each line
-Answer: 
+Answer: cat /etc/shells | awk ' // { print $0, "\n" } '
 
 
 2. Write an awk one-liner that prints the file "shells" with a ">" sign at the beginning of each line
-Answer: 
+Answer: cat /etc/shells | awk ' // { print "> ", $0 } '
 
 3. Write an awk one-liner to swap the first and last words in the output of "help cd"
+Answer: help cd | awk ' { printf("%s", $NF) } { for(i=2; i<NF; i++) printf(" %s", $i) } { if(NF > 1) printf(" %s", $1) } { printf("\n") } '
 
 4. The command /sbin/ifconfig prints information about network interfaces on the machine. A sample output is provided in the file "ifconfig.sample", and looks like this:
 
@@ -20,6 +21,7 @@ p2p0: flags=8843 mtu 2304
     status: inactive
 
 Write an awk one liner that splits this file into multiple file, one for each block, so after running the script we'll have a file named "en3" with the lines of the first block, and another file named "p2p0" with the lines of the second block.
+Answer: /sbin/ifconfig | awk ' BEGIN { block=1 } { if(length($0) > 0) print $0 > block } { if(length($0) == 0) block++ } '
 
 
 
