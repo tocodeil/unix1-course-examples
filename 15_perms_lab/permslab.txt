@@ -1,14 +1,28 @@
 1. Using the file structure in the current directory, write the commands that perform the following:
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
+  answer: chmod a=r src/main.c
 
   - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
+  answer: chmod 562 include/player.h
 
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
+  answer: cd Doc
+		  chmod 600 *
 
   - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+answer: chmod -R 777 lib
 
-2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+2. create a new directory named "test" and inside an empty file named "secret".
+ Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+answer: yes..(??)
+mkdir test
+cd test
+tuch secret
+chmod 000 secret
+rm secret
+cd ..
+rmdir test
 
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
 
