@@ -1,13 +1,27 @@
 Files and Directories Lab
 Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
 
-1. Create a new folder named "lab" in your home directory and inside create the files:
+1. 
+Create a new folder named "lab" in your home directory and inside create the files:
 
   - a.out, hero.c, enemy.c, game.c, main.c
   - human.h, monster.h
   - .highscore
 
 Write here the commands you used:
+
+
+mkdir lab
+cd lab/
+touch  a.out
+touch  hero.c
+touch  enemy.c
+touch  game.c
+touch  main.c
+touch  human.h
+touch  monster.h
+touch  .highscore
+
 
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
@@ -16,22 +30,57 @@ Write here the commands you used:
 
 Write here the commands you used:
 
+
+
+mkdor Musidc Misc Drivers
+
+
+
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
 
+
+
+cp -r /etc/passwd Drivers/
+cp -r /etc/passwd Misc/
+cp -r /etc/passwd Music/
+
+
+
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
+
+
 Now create a new directory named "myinfo" and move the file into it.
 
-Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
+Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? 
+How ?
+
+ I cannot create a dir in same location as the file with the same name, because Linux is file descriptive 
+I can create in different location a folder and inside of it a file with the same name, or to use capital letters and Linux is case sensitive
+
 
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+
+
+
+mv main.c game.c enemy.c hero.c Music/
+
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
 
 
+I used cd ../ to exit Music dir and then:
+
+cp -r Music/ Drivers/
+
+
+
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+
+You can't delete with rmdir directory with files inside, you need to use 
+rm -r Drivers/
