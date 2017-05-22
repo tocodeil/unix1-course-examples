@@ -1,29 +1,17 @@
-Glob Lab.
-https://www.tocode.co.il/bundles/unix1/lessons/globlab
+1. Mkdir  wildcards
+2. Cd wildcards � mkdir� (all folder listed
+3. Touch command for files.
+4. 
+a. echo [a-z]* (using this command export LC_ALL=POSIX)
+b. echo [A-Z]*
+c. echo * [a,e,i,o,u]
+d. echo * [!a,e,i,o,u]
+e. cd src => echo *.c
+f. could not find other way (same as the above: cd dir => echo *.c)
+g. could not find a way with one command line � not sure I got this task right. 
+5. -rw-r--r-- 1 root root 1738 May 16 06:27 /etc/passwd
+6. -rw-r--r-- 1 gad gad 0 May 21 18:55 README.txt
+-rw-r--r-- 1 gad gad 0 May 21 18:55 test.c
+7.  I don�t know
 
-1. Type in a glob pattern to match:
-
-  1. All files whose name starts with a lowercase letter
-  Answer: 
-
-  2. All files whose name starts with an uppercase letter
-  Answer:
-
-  3. All files whose name ends in an "a", "e", "i", "o" or "u"
-  Answer:
-
-  4. All files whose name DOES NOT end in an "a", "e", "i", "o" or "u"
-  Answer:
-
-  5. All files with extension ".c" that are in a folder named "src"
-  Answer:
-
-  6. All files with extension ".c" under any folder
-  Answer:
-
-2. Write a command that would delete all files ending with a ".png" under any subdirectory.
-
-3. The command "ls -l" can take the name of a file or directory and show details on them. From within "wildcards" folder run "ls -l [A-Z]*". What was printed? Why?
-
-4. Search in "man ls" for an option to show only directory data so the command "ls _____ D*" should print only the word Doc
 
