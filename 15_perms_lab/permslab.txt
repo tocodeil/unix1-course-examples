@@ -13,3 +13,20 @@
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
 
 
+
+1. cd wildcards
+2. chmod a=r main.c
+3. chmod 562 player.h
+4. Not sure what happend, but using the following chmod, it "kicked" me out from "Doc" dir.
+How can I revers it?
+5. chmod -R 600 README.txt text.c
+6. chmod -R 777 lib zlib.c
+7. mkdir test, cd test, touch secret
+chmod 000 secret
+remove write-protected regular empty file �secret�? yes
+yes rm -r test
+
+8.  umask 773
+just to check if it worked, i created a new file "umsk"
+r-- 1 gad gad 0 May 24 19:17 umask-------
+
