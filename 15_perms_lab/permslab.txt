@@ -1,15 +1,43 @@
 1. Using the file structure in the current directory, write the commands that perform the following:
 
-  - change permission of file src/main.c to r--r--r-- using chmod letter notation
+  - change permission of file src/main.c to r--r--r-- 
+chmod u-w src/main.c
 
-  - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
+using chmod letter notation
+
+  - change permission of file include/player.h to r-xrw--r-
+Note: "r" in my case is in the middle, not in the beginning 
+chmod u-w,q+xw include/player.h
+ 
+using chmod octal (numbers) notation
 
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
 
-  - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+  -
+chmod 600 Doc/*
 
-2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+ change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+
+
+
+chmod 777 -R lib
+
+
+2. 
+create a new directory named "test" and inside an empty file named "secret". 
+Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+
+
+
+chmod 000 test/*
+
+Yes, I can delete the file and the test, im not sure why if basically it's untouchable 
 
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
 
 
+
+umask enables to set permissions by default to any new file or folder in specific location 
+It can be very usefull if group of people are working in the same location and they all need to be able to use files in any way they wish, especially if new files/folders are created constantly and the desired permissions must stay the same 
+
+in order to set new files permissions to ------r- - you need to type umask 773
