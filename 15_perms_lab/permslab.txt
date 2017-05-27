@@ -2,14 +2,40 @@
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
 
-  - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
+ 
 
-  - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
+chmod a-wx src
 
-  - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+ - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
 
-2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+  
+
+562 include
+
+- change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
+
+  -
+
+rchmodf a-x go-rwx Doc
+
+
+ change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+
+2
+
+chmod -R go+w lib
+
+. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+
+
+i can't delete the file and the folder. i do not have any premission to read, write or execute. 
+
+
 
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
 
+
+
+
+unmask o+r
 
