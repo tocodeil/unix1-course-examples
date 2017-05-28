@@ -1,15 +1,19 @@
-Intro To Command Line Lab.
-Questions online: https://www.tocode.co.il/bundles/unix1/lessons/cmdlab
-
 1. Login to your UNIX account. How do you find:
-  - your current shell?
-  - your default shell?
-  - a list of all shells currently installed on the machine?
-
-עברית שפה קשה. בעקרון המעטפת הנוכחית שלי היא bash
+  - your current shell? echo $0
+  - your default shell? bash (echo $SHELLdate)
+  - a list of all shells currently installed on the machine? cat /etc/shells
 
 2. View the file /etc/passwd on your machine with the command "cat /etc/passwd". Then read about the file in "man 5 passwd". What information is held in the file? What are the fields in each line?
+1-information about user account
+2-there are 7 fields
+  1- login name
+  2- optional encrypted password
+  3- numirical user ID
+  4- numerical group ID
+  5- user name or comment field
+  6- user home directory
+  7- optional user command interpreter
 
-3. In Unix, the /etc folder holds configuration files. Display all files in "/etc" folder ordered by file size (Hint: search in "man ls")
+3.ls -S (if you are inside the folder)� or ls -S�/etc
 
-4. Print current date/time formatted as: "Sun 21/03/2010, 14:30". Hint: read "man date" and search for the correct format string.
+4. date "+%a %d/%m/%y, %H:%m" 
