@@ -7,31 +7,72 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
   - human.h, monster.h
   - .highscore
 
+
 Write here the commands you used:
+
+nadavg@mews2659:~/lab$ cd
+nadavg@mews2659:~/lab$ mkdir lab
+nadavg@mews2659:~/lab$ cd lab
+nadavg@mews2659:~/lab$ >a.out
+nadavg@mews2659:~/lab$ >hero.c
+nadavg@mews2659:~/lab$ >enemy.c
+nadavg@mews2659:~/lab$ >game.c
+nadavg@mews2659:~/lab$ >main.c
+nadavg@mews2659:~/lab$ >human.h
+nadavg@mews2659:~/lab$ >monster.h
+nadavg@mews2659:~/lab$ > .highscore
+
 
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
   - Misc
   - Drivers
 
-Write here the commands you used:
+Write here the commands you used: 
+
+nadavg@mews2659:~$ cd lab                                                                                                                                                                                                                                                      
+nadavg@mews2659:~/lab$ mkdir Music                                                                                                                                                                                                                                             
+nadavg@mews2659:~/lab$ mkdir Misc                                                                                                                                                                                                                                              
+nadavg@mews2659:~/lab$ mkdir Drivers
 
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
+
+nadavg@mews2659:~/lab$ cp /etc/passwd /homes/nadavg/lab/Music
+nadavg@mews2659:~/lab$ cp /etc/passwd /homes/nadavg/lab/Misc
+nadavg@mews2659:~/lab$ cp /etc/passwd /homes/nadavg/lab/Drivers
 
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
 
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
 
+nadavg@mews2659:~$ echo My name is nadav. Linux is fast, comfortable and useful. >> myinfo
+nadavg@mews2659:~$ mv myinfo Desktop
+nadavg@mews2659:~$ mkdir myinfo
+nadavg@mews2659:~$ mv Desktop/myinfo myinfo
+
+It worked because I didn't create the myinfo file on the same directory where myinfo directory was.
+
+
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+
+nadavg@mews2659:~$ mv lab/main.c lab/Music/
+nadavg@mews2659:~$ mv lab/game.c lab/Music/
+nadavg@mews2659:~$ mv lab/enemy.c lab/Music/
+nadavg@mews2659:~$ mv lab/hero.c lab/Music/
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
 
+nadavg@mews2659:~$ mv lab/Music/ lab/Drivers/
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+
+It failed to remove because the directory is not empty.
+Worked with:
+nadavg@mews2659:~/lab$ rm -r Drivers
