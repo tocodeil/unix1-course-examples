@@ -9,6 +9,17 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
 
 Write here the commands you used:
 
+$ mkdir ~/lab
+$ touch ~/lab/a.out
+
+Better to 'cd' into lab in order to create multiple files at once.
+
+$ cd lab
+$ touch hero.c enemy.c game.c main.c
+$ touch human.c monster.
+$ touch .highscore
+
+
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
   - Misc
@@ -16,22 +27,59 @@ Write here the commands you used:
 
 Write here the commands you used:
 
+$ mkdir Music Misc Drivers
+
+
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
+$ pwd
+/home/yosef/lab
+$ cp /etc/passwd Dr*
+$ cp /etc/passwd Mi*
+$ cp /etc/passwd Mu*
+
+I tried to "cp" all of them all together (cp /etc/passwd Mi* Mu* Dr*), but cp can copy multiple sourses to DIR, but not to multiple DIRS (According to cp --help it can: "Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY")
+
 
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
 
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
 
+$ touch myinfo
+$ pico my* ; Ctrl+x
+$ mkdir myinfo
+
+It did not work, got this:
+mkdir: cannot create directory ‘myinfo’: File exists
+I guess: in the same directory two files with same names can not be created.
+
+$ rm myinfo
+$ mkdir 
+$ touch ~/myinfo/myinfo
+
+Now two files of the same name are in the different places, so they are not equal (location differs), so there is no problem of two same objects.
+
+
+
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+
+$ mv ~/lab/????.c ?????.c ~/lab/Music
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
 
+$ mv ~/lab/Mu* ~/lab/Dr*
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+
+It did not work, for rmdir works for empty folders only.
+
+rm -r ~/lab/Dr*
+
+*I have a silly question: can directory be changed somehow to become a file?
+
