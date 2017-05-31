@@ -1,20 +1,58 @@
 Preparation: Perform the following  (no need to write the commands you used):
 
-  - create a new directory named "links"
+ 
+ - create a new directory named "links"
   - cd to it
-  - inside the directory create 2 text files named "file1" and "file2". Write the names of some things you like in file "file1", and some things you don't like in file "file2"
+  - inside the directory create 2 text files named "file1" and "file2". 
+Write the names of some things you like in file "file1", and some things you don't like in file "file2"
+
 
 1. Perform the following and write the commands you used, from within links directory:
 
-  - Create a symbolic link named file3 that points to "file1"
+  
+- Create a symbolic link named file3 that points to "file1"
   Answer: 
 
-  - Create a hard link named file4 that points to "file2"
+
+
+ln -s file1 file3
+
+- Create a hard link named file4 that points to "file2"
   Answer: 
 
-  - Create a new directory named "tmp" in your home folder:
+ 
+ 
+ln file2 file4 
+
+- Create a new directory named "tmp" in your home folder:
   Answer:
 
-2. Move "file3" to the new "~/tmp" directory you just created. Can you still use it to see the original "file1" ? Why not? How would you create a symbolic link that would survive the transfer to ~/tmp ?
+
+cd
+mkdir tmp
+
+
+2. Move "file3" to the new "~/tmp" directory you just created. Can you still use it to see the original "file1" ? 
+Why not? 
+
+No, because I moved the link to another place and broke it 
+
+
+How would you create a symbolic link that would survive the transfer to ~/tmp ?
+
+I need to create it using full path 
+
+ln -s $(realpath file1) file3 
+mv file3 ~/tmp/
+cd ../tmp/
+ls
+
+and it's a workable link 
+
 
 3. How can you tell that "file2" and "file4" refer to the same file?
+
+
+ls -li
+
+they both have the same number 
