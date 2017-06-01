@@ -5,25 +5,41 @@ https://www.tocode.co.il/bundles/unix1/lessons/globlab
 
   1. All files whose name starts with a lowercase letter
   Answer: 
+nadavg@mews2659:~/wildcards$ ls -d [a-z]*
 
   2. All files whose name starts with an uppercase letter
   Answer:
+nadavg@mews2659:~/wildcards$ ls -d [A-Z]*
 
   3. All files whose name ends in an "a", "e", "i", "o" or "u"
   Answer:
+nadavg@mews2659:~/wildcards$ ls -d *[aeiou]
 
   4. All files whose name DOES NOT end in an "a", "e", "i", "o" or "u"
   Answer:
+nadavg@mews2659:~/wildcards$ ls -d *[!aeiou]
 
   5. All files with extension ".c" that are in a folder named "src"
   Answer:
+mews2659 ~ >> ls /homes/nadavg/wildcards/src/*.c
 
   6. All files with extension ".c" under any folder
   Answer:
+mews2659 ~/wildcards >> ls */*.c
 
 2. Write a command that would delete all files ending with a ".png" under any subdirectory.
+mews2659 ~/wildcards >> rm */*.png
 
 3. The command "ls -l" can take the name of a file or directory and show details on them. From within "wildcards" folder run "ls -l [A-Z]*". What was printed? Why?
 
+mews2659 ~/wildcards >> ls -l [A-Z]*
+total 0
+-rw-r--r-- 1 nadavg develop6 0 May 29 16:53 README.txt
+-rw-r--r-- 1 nadavg develop6 0 May 29 16:53 test.c
+
+README.txt was printed because it starts with a capital letter, but I'm not sure why test.c was printed..
+
 4. Search in "man ls" for an option to show only directory data so the command "ls _____ D*" should print only the word Doc
+
+mews2659 ~/wildcards >> ls -d D*
 
