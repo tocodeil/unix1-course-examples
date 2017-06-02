@@ -8,6 +8,20 @@ Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
   - .highscore
 
 Write here the commands you used:
+mkdir lab
+cd lab
+touch a.out
+touch hero.c
+touch enemy.c
+touch game.c
+touch main.c
+touch human.h
+touch monster.h
+touch .highscore
+or combined:
+touch a.out a.out a.out game.c main.c human.h human.h
+
+
 
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
@@ -15,23 +29,52 @@ Write here the commands you used:
   - Drivers
 
 Write here the commands you used:
+mkdir Music
+mkdir Misc
+mkdir Drivers
 
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
+from inside the folder
+cd Music
+cp /etc/passwd .
+cd ..
+or (from lab folder)
+cp /etc/passwd /homs/Moshiko/lab/Misc
+cp /etc/passwd /homs/Moshiko/lab/Drivwe
+
 
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
 
+touch myinfo
+echo "moshiko">>myinfo
+echo "unix is the best because it's free, easy,and fun!">>myinfo
+mkdir myinfo ( not working we can't create a directory and file with the same name)
+
+
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
+it's not working we can't create a directory and file with the same name.
+we need to:
+1-change the location of the folder.
+2-change one letter to Capital letter.
 
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+mv main.c /homs/Moshiko/lab/Misc
+or combined
+mv game.c enamy.c hero.c /homs/Moshiko/lab/Misc
 
+ 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
 Write here the commands you used:
+mv Music Drivers 
 
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+rmdir Drivers- not working because it's not an empty folder
+we need to use -r whit rm  not rmdir
+rm -r Drivers now it's working :)
