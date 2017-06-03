@@ -32,3 +32,16 @@ What was printed? Why? Fix the command line to get the output:
 2 Nov
 
 
+
+1. 
+2. ls -l | cut -f1 -d" "
+3.  ls -l -t | head
+4. ***
+5. ***
+6. not working - the dirctory
+
+7. �� �����, ����� ������ ����. �� ���� ��������: << - ������� ����� �����, �� �����  set -o noclobber ����� �����
+
+8. ***
+
+
