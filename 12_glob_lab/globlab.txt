@@ -1,29 +1,58 @@
 Glob Lab.
 https://www.tocode.co.il/bundles/unix1/lessons/globlab
 
+
+
+mkdir wildcards
+cd wildcards
+mkdir include lib img Doc src
+touch src/main.c src/player.c include/player.h lib/zlib.c img/hero.png img/player.png Doc/README.txt Doc/test.c.
+
+Only folders (without subs)
+
 1. Type in a glob pattern to match:
 
   1. All files whose name starts with a lowercase letter
   Answer: 
 
+export LC_COLLATE=C
+ls -d [a-z]*
+
   2. All files whose name starts with an uppercase letter
   Answer:
+
+ls -d [A-Z]*
+
 
   3. All files whose name ends in an "a", "e", "i", "o" or "u"
   Answer:
 
+ls -d *[aeiou]
+
+
   4. All files whose name DOES NOT end in an "a", "e", "i", "o" or "u"
   Answer:
 
+ls -d *[!aeiou]
+
   5. All files with extension ".c" that are in a folder named "src"
   Answer:
+cd sr
+l *.c
+
 
   6. All files with extension ".c" under any folder
   Answer:
 
+find -name '*.c'
+
 2. Write a command that would delete all files ending with a ".png" under any subdirectory.
+
+find -name '*.png' -exec rm *.png {} \
 
 3. The command "ls -l" can take the name of a file or directory and show details on them. From within "wildcards" folder run "ls -l [A-Z]*". What was printed? Why?
 
-4. Search in "man ls" for an option to show only directory data so the command "ls _____ D*" should print only the word Doc
+Content of "Doc" (first directory). Because after ls -l path to certain folder must be typed. So "[A-Z]*" bash takes as "every subfolder which starts from capital letter".
 
+4. Search in "man ls" for an option to show only directory data so the command "ls _____ D*" should print only the word Doc
+ls -d D*
