@@ -2,12 +2,20 @@ Files and Directories Lab
 Online: https://www.tocode.co.il/bundles/unix1/lessons/fileslab
 
 1. Create a new folder named "lab" in your home directory and inside create the files:
-
   - a.out, hero.c, enemy.c, game.c, main.c
   - human.h, monster.h
   - .highscore
 
+
 Write here the commands you used:
+
+in my root folder,
+mkdir lab
+pico main.c game.c enemy.c hero.c a.out
+pico human.h, monster.h
+pico .highscore
+
+[Not sure but I went in lab dir and ran the pico command from there, Also I should have used touch and not pico]
 
 2. "cd" into lab folder and inside create the following subdirectories:
   - Music
@@ -15,23 +23,50 @@ Write here the commands you used:
   - Drivers
 
 Write here the commands you used:
+mkdir Music Misc Driversm
 
 3. Copy the file "/etc/passwd" to each subdirectory created in (2).
 
 Write here the commands you used:
 
+< 681 mews2791 ~/lab> cp /etc/passwd Drivers/
+< 682 mews2791 ~/lab> cp /etc/passwd Misc/
+< 683 mews2791 ~/lab> cp /etc/passwd Music/
+
 4. Create a file named myinfo and inside write your name and 3 things you like about Unix.
 Now create a new directory named "myinfo" and move the file into it.
 
 Did it work? Why? Can you create a file "myinfo" inside a directory named "myinfo" ? How ?
+< 691 mews2791 ~/lab> touch myinfo
+< 692 mews2791 ~/lab> pico myinfo
+When trying to create a dirctory myinfo I get an message:
+mkdir: cannot create directory ‘myinfo’: File exists
+
+I did a bit of reading and a directory is also a file which will explain why I can create both on the same folder. 
+I was able to create myinfo folder and witin a myinfo file. 
+See below:
+< 697 mews2791 ~> cd Downloads/
+< 698 mews2791 ~/Downloads> mkdir myinfo
+< 699 mews2791 ~/Downloads> cd myinfo/
+< 700 mews2791 ~/Downloads/myinfo> touch myinfo
+
 
 5. Move the files "main.c", "game.c", "enemy.c" and "hero.c" to folder "Music".
 
 Write here the commands you used:
+mv-t Music enemy.c game.c  hero.c  main.c
 
 6. Move the folder "Music" with all its contents into directory "Drivers"
 
-Write here the commands you used:
 
+Write here the commands you used:
+mv Music Drivers/
 
 7. Try to use "rmdir" to delete directory "Drivers". Did it work? Why? How can you delete directory "Drivers" ?
+
+When trying to remove:
+rmdir: failed to remove ‘Drivers/’: Directory not empty
+
+Should use rm -r to delete a folder with files witin. 
+
+
