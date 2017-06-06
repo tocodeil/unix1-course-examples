@@ -2,14 +2,30 @@
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
 
+chmod u=r,g=r,o=r /home/yosef/wilcards/src/main.c
+
   - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
+
+chmod 564 /home/yosef/wilcards/include/player.h
 
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
 
+chmod 600 /home/yosef/wilcards/Doc/*
+
   - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+
+chmod -R 777  /home/yosef/wilcards/lib
 
 2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
 
+mkdir test
+touch ~/test/secret
+chmod 000 ~/test/secret
+rm ~/test/secret
+rm -r test
+It's possible, for deleting file = editing this file, so if you can set permissions, which is editing, so you also can delete the file  and  directory = file, so the same.
+
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
 
-
+Sets new files' permissions or shows you their current value.
+umask 773
