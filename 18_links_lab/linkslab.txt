@@ -8,13 +8,24 @@ Preparation: Perform the following  (no need to write the commands you used):
 
   - Create a symbolic link named file3 that points to "file1"
   Answer: 
+	ln -s file1 file3
 
   - Create a hard link named file4 that points to "file2"
   Answer: 
+	ln file2 file4
 
   - Create a new directory named "tmp" in your home folder:
   Answer:
+	benjaminm@mews2791:~/lab/links$ mkdir tmp
+	benjaminm@mews2791:~/lab/links$ mv tmp ~
+	[q:I think there is a way to do it in one line of command?]
 
 2. Move "file3" to the new "~/tmp" directory you just created. Can you still use it to see the original "file1" ? Why not? How would you create a symbolic link that would survive the transfer to ~/tmp ?
 
+No, it was relative to the links folder, once we changed the location it can't find the location for file1, 
+I will use the realpath and so when moving the file we will still get the link to file1. 
+
 3. How can you tell that "file2" and "file4" refer to the same file?
+
+ls -il,
+Same  inode number. 
