@@ -2,14 +2,33 @@
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
 
+chmod u=r,g=r,a=r src/main.c
+
   - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
+
+mews2659 ~/wildcards >> chmod 474 include/player.h 
 
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
 
+mews2659 ~/wildcards >> chmod 600 Doc/*.*
+
   - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
+
+chmod -R 777 lib/
 
 2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
 
+mkdir test
+touch test/secret
+chmod 000 test/secret
+mews2659 ~/wildcards >> rm -r test/
+rm: remove write-protected regular empty file ‘test/secret’? y
+
+It worked because there were no permissions for the file. Perhaps because I am using tcsh?
+
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
+
+umask displays the default permissions newly created files receive.
+umask 002 is supposed to set the new files permissions to ------r-- but it didn't work for me..
 
 
