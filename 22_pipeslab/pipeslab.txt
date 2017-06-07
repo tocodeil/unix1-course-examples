@@ -2,19 +2,43 @@ For each of the following, type a single command line that performs:
 
   1. Print the number of lines from "ls -l" which represent a path that has execute permission to their owner.
   Answer: 
+	ls -l|grep $USER| cut -c 4|grep x|wc -w
+	[Q: Based on the commands we know by now is there a shorter way to do 	this? With less pipes?] 
 
   2. Print the number of lines from "ls -l" which represent a path that has execute permission to their owner, group and others.
   Answer: 
+	ls -l|grep $USER| cut -c 4,7,10|grep x|wc -w
 
   3. Print the number of lines from "ls -l" which represent paths that were modified today (no matter which day we run the command)
   Answer: 
+	
+	ls -l | cut -f6-8 -d" "| grep $(date +%b" "%d)| wc -l
+	
+	[Note: this answer is not working because date +%d return an answer for 	today day as 07 (two char) and in ls print it's only 7(one char)
+	I could check with or and add the “0” char if need but I think you are 	looking for a different answer?
+	Just in case when checking with the string “Jun 07” it's working but I 	know it's not what we are looking for,
+	Also I had a problem when cutting date from folders, the colums where 	different with the date comapared to file? I am not sure for the reason? 
+
+	Below an answer where I used a set date for today:
+	ls -l | cut -f6-8 -d" "| grep "Jun  7"| wc -l (working)
+	]
 
   4. Modify (1) and (2) to count files only (no directories)
   Answer:
 
+	(1) ls -l|grep $USER|cut -c 1-4|grep x |cut -c1 | grep - | wc -l
+	(2) ls -l|grep $USER|cut -c 1,4,7,10|grep x| cut -c1 | grep -|wc -w
+
+
   5. The command /sbin/ifconfig shows information regarding the machine's network interfaces. Use the command to print only the IP address of the machine. Remember not to show the special loopback address 127.0.0.1
 
+	/sbin/ifconfig | tr -s " " | cut -f3 -d" " | grep addr | head -1
+
 6. Joe wanted to sort a text file in place so he tried to run the command "sort myfile.txt > myfile.txt". What happened to the file? Why?
+
+Override the file, Should have used append or clobbering to avoid this error
+
+	
 
 7. The command "who" shows all connected users along with the connection start date. For example running it on my machine gives:
 
@@ -30,5 +54,16 @@ $ who | cut -d ' ' -f 3 | sort | uniq -c
 What was printed? Why? Fix the command line to get the output:
 2 Dec
 2 Nov
+
+who | tr -s " " | cut -d ' ' -f 3| cut -f2 -d" "| cut -f2 -d-| uniq -c
+
+[Note: Below is the ouput I am getting on my machine,
+We can use the tr command to replace for example 05 of May but maybe there is a better why to do it?]  
+
+	2 04
+      3 05
+      2 06
+      1 05
+      2 06
 
 
