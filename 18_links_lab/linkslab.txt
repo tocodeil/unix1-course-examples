@@ -3,18 +3,40 @@ Preparation: Perform the following  (no need to write the commands you used):
   - create a new directory named "links"
   - cd to it
   - inside the directory create 2 text files named "file1" and "file2". Write the names of some things you like in file "file1", and some things you don't like in file "file2"
+mkdir links
+cd lin*
+touch file1 file2
+pico file1 file2
+
 
 1. Perform the following and write the commands you used, from within links directory:
 
   - Create a symbolic link named file3 that points to "file1"
   Answer: 
 
+ln -s file1 file3
+
+
   - Create a hard link named file4 that points to "file2"
   Answer: 
+
+ln file2 file4
 
   - Create a new directory named "tmp" in your home folder:
   Answer:
 
+mkdir ~/tmp
+
 2. Move "file3" to the new "~/tmp" directory you just created. Can you still use it to see the original "file1" ? Why not? How would you create a symbolic link that would survive the transfer to ~/tmp ?
 
+mv file3 ~/tmp
+pico ~/tmp/file3 - will open an empty file. file3 become red and can not be used as link to file1 anymore, for it's looking for file1 in the same folder (by definition of its' creating "ln -sfile1 file3").
+To cope with the trouble absolute path should be used:
+
+ln -s $(realpath file1) file
+
 3. How can you tell that "file2" and "file4" refer to the same file?
+
+1. Using $ l -li, we see, that both have the same id number.
+2. Last change date & permissions & content are always the same.
+
