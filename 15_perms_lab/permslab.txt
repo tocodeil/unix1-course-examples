@@ -2,7 +2,7 @@
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
 
-  - change permission of file include/player.h to r-xrw--r- using chmod octal (numbers) notation
+  - change permission of file include/player.h to r-xrw-r-- using chmod octal (numbers) notation
 
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
 
