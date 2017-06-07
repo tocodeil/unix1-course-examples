@@ -1,15 +1,52 @@
 1. Using the file structure in the current directory, write the commands that perform the following:
 
   - change permission of file src/main.c to r--r--r-- using chmod letter notation
+chmod 444 src/main.c
+
 
   - change permission of file include/player.h to r-xrw-r-- using chmod octal (numbers) notation
 
+chmod 564 include/player.h
+[note: for the group ALL should be the order in r-- ? Like rwx?]
+
   - change permission of all files in Doc folder (without changing the permissions of Doc folder itself) to rw-------
+
+[q: is it possible to undo? Sadly I made a mistake an changed also permissions of Doc folder itself]
+
+chmod 600 Doc/*.* 
+[I changed again the permisson and after running the above command I see that the permisson only the file now is as requsted, My reasoning was that only if it's a file we need to change and this is why I used *.*]. 
+
 
   - change permission of "lib" folder and all files and subdirectories inside it to rwxrwxrwx
 
-2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? why?
+chmod 777 lib/*
+
+
+2. create a new directory named "test" and inside an empty file named "secret". Change permissions of the file "secret" to ---------. Can you delete the file secret? can you delete the folder test? Why?
+
+When trying to rm the file I see this output:
+rm: remove write-protected regular empty file ‘test/secret’?
+
+I was able to remove the file but was asked if I want to.
+
+When trying to delete the folder I see the same output as above, 
+[I have created again the file secret with chmod 000]
+
+I assume that the reason it that the permission set is for non so I see this output.
 
 3. Read the output of "help umask". Explain in your own words what umask does, and how would you use it to set new files permissions to ------r--
+
+Control over defult setup for permissions, 
+
+defult for new file is 666 
+
+and we want only 004 
+
+umask 662 
+
+
+
+
+ 
 
 
