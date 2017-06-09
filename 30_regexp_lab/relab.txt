@@ -1,17 +1,7 @@
-Use grep to print only the lines from "input" for which:
-
-1. There is a binary number in the line
-
-2. There is an even binary number in the line
-
-3. Line includes a hexadecimal number
-
-4. Line starts with a lowercase letter
-
-5. Line is not empty
-
-6. Line starts with a lowercase letter and ends in a number
-
-7. Line is longer than 50 characters
-
-8. Line is of an even length
+1. grep -E '[0-9]{0,1}' input | head -11
+2. 
+3. grep hexadecimal input
+4. grep ^[a-z] input
+5. grep -v -e '^$' input
+6. grep '[^a-z] [$0-9]' input
+7. grep '.\{50\}' input
