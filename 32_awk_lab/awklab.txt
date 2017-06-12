@@ -1,26 +1,48 @@
 1. Write an awk one-liner that prints the file "shells" with a blank line after each line
-Answer: 
+
+Answer:
+
+
+cat /etc/shells |awk 'BEGIN{ORS="n\n"};1'
+
 
 
 2. Write an awk one-liner that prints the file "shells" with a ">" sign at the beginning of each line
+
 Answer: 
+
+cat /etc/shells |awk '{sub(/^/, ">")};1'
+
 
 3. Write an awk one-liner to swap the first and last words in the output of "help cd"
 
-4. The command /sbin/ifconfig prints information about network interfaces on the machine. A sample output is provided in the file "ifconfig.sample", and looks like this:
+help cd |awk '{tmp=$1;$1=$NF;$NF=tmp;print}'
+
+
+4. The command /sbin/ifconfig prints information about network interfaces on the machine. 
+A sample output is provided in the file "ifconfig.sample", 
+and looks like this:
 
 en3: flags=8963 mtu 1500
     options=60
-    ether 32:00:18:24:c0:00
+    
+ether 32:00:18:24:c0:00
     media: autoselect 
-    status: inactive
+    
+status: inactive
 p2p0: flags=8843 mtu 2304
-    ether 06:38:35:47:96:24
+    
+ether 06:38:35:47:96:24
     media: autoselect
-    status: inactive
-
-Write an awk one liner that splits this file into multiple file, one for each block, so after running the script we'll have a file named "en3" with the lines of the first block, and another file named "p2p0" with the lines of the second block.
-
+   
+ status: inactive
 
 
+Write an awk one liner that splits this file into multiple file, one for each block, 
+so after running the script we'll have a file named "en3" with the lines of the first block, 
+and another file named "p2p0" with the lines of the second block.
 
+
+
+
+I don't have such file, can I use something else similar (can you tell me which?)? 
