@@ -1,24 +1,50 @@
 1. Write command lines to find using "find":
 
   -. All files owned by yourself in /tmp folder
+     find ~/tmp \!-user moshiko
 
+     find /tmp -user moshiko
+     find -user $USER -type f
+     find ~/tmp -type f �user moshiko
+     I am not sure what is the best answer
   -. All files and directories not owned by you in /tmp folder
-
+ 
+     find . \! -user $USER \( -type d -or -type f \)
+      
+     
   -. All files, folders and links in your home folder whose name ends with a ".c"
+
+    find ~ -type d -or -type f -or -type l -name "*.c"
+   
 
   -. All files in your home folder whose name starts with an "a", "e", "i", "o" or "u"
 
+     find ~ -name "a*" -or -name "e*" -or -name "i*" -or -name "o*" -or -name "u*"
+
   -. All files in your home directory whose size is above 10MB
 
+     find . -size +10M
+
   -. All files in your home directory which were modified in the past 2 days
+  
+     find ~ -type f -a -mtime -2
 
   -. All files in your home directory which were not modified for over a month, and size is above 10MB.
 
+    find ~ -size +10M -a -mtime +30
+
+
 2. Create a hard link to a file of your choice and put it in a subdirectory under your home folder. How can you use "find" to locate the hard link given the original file?
 
+
+
 3. Create 3 empty text files a.txt, b.txt and c.txt. Use a single find command to:
+
   - copy a.txt to a.txt.backup
+
   - copy b.txt to b.txt.backup
+
   - copy c.txt to c.txt.backup
+
 What was the command?  
 
