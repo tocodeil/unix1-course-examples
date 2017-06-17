@@ -1,34 +1,62 @@
 For each of the following, type a single command line that performs:
 
+
+
   1. Print the number of lines from "ls -l" which represent a path that has execute permission to their owner.
-  Answer: 
+
+  Answer: ls -l | cut -c 4 | grep -c x 
+
 
   2. Print the number of lines from "ls -l" which represent a path that has execute permission to their owner, group and others.
-  Answer: 
+
+  Answer:ls -l | cut -c 4,7,10 | grep -c x 
+
+
 
   3. Print the number of lines from "ls -l" which represent paths that were modified today (no matter which day we run the command)
-  Answer: 
+
+  Answer: ls -l  cut -f 6,7-d' ' |grep +(date +%b� �%d) wc -l
+
+
 
   4. Modify (1) and (2) to count files only (no directories)
-  Answer:
+
+  Answer:ls -l | cut -f1 | grep -c x
+
+
 
   5. The command /sbin/ifconfig shows information regarding the machine's network interfaces. Use the command to print only the IP address of the machine. Remember not to show the special loopback address 127.0.0.1
 
+    /sbin/ifconfig | cut ...
+
 6. Joe wanted to sort a text file in place so he tried to run the command "sort myfile.txt > myfile.txt". What happened to the file? Why?
+
+   the file myfile.txt was deleted ( run over..)
 
 7. The command "who" shows all connected users along with the connection start date. For example running it on my machine gives:
 
+
+
 $ who
+
 ynonperek console  Nov 18 16:29 
+
 ynonperek ttys000  Dec 10 11:58 
+
 ynonperek ttys001  Nov 20 08:35 
+
 ynonperek ttys005  Dec 10 17:04 
 
+. 
+
 I want to show how many connections began in each month so I tried to run the command:
+
 $ who | cut -d ' ' -f 3 | sort | uniq -c
 
+ we receved the pts number
+
 What was printed? Why? Fix the command line to get the output:
+
 2 Dec
+
 2 Nov
-
-
