@@ -2,16 +2,33 @@ Use grep to print only the lines from "input" for which:
 
 1. There is a binary number in the line
 
+$ grep -E -w [0,1]+ input
+
 2. There is an even binary number in the line
+
+grep -E -w [0,1]+[0] input
 
 3. Line includes a hexadecimal number
 
+grep -E -w [0-9a-f]+ input
+
 4. Line starts with a lowercase letter
+
+grep -E '^[a-z]' input
 
 5. Line is not empty
 
+grep -E ^. input
+
 6. Line starts with a lowercase letter and ends in a number
+
+^[a-z]+.*[0-9]$ input
 
 7. Line is longer than 50 characters
 
+
+grep -E .{50} input
+
 8. Line is of an even length
+
+grep -E '^(..)+$'  input
