@@ -1,15 +1,37 @@
 1. Write the following aliases into the file aliases (and upload that file too):
+
   - ll => ls -l
+
   - rm => rm -i
+
   - cp => cp -i
+    
+    alisa ll="ls -l"
+    alias rm="rm -i"
+    alais cp="cp -i"
+    echo �a ll 'ls -l'�>> file name ?
 
 2. How can you "install" all defined aliases into the current shell? How can you add them permenantly to all shells?
 
-3. Add the following aliases into the aliases file you defined previously:
-  - count_files => print the number of files in current directory
-  - bysize => print files ordered by size
-  - ff => search a file by partial name. For example running "ff ba" should print all files with "ba" in their name
-  - lsf => like "ls -l" but print only files
-  - lsd => like "ls -l" but print only directories
-  - lsg => like "ls -l" but print all directories first and then files
+  we need to check the filr bachrc
+  we need to add the aliases to bach_aliases 
 
+3. Add the following aliases into the aliases file you defined previously:
+
+  - count_files => print the number of files in current directory
+        alisa count_files="ls -d | wc -l" 
+
+  - bysize => print files ordered by size
+         alisa bysize= "ls -S" 
+
+  - ff => search a file by partial name. For example running "ff ba" should print all files with "ba" in their name
+        alisa ff = "ls -l | find . type f $1,$2
+
+  - lsf => like "ls -l" but print only files
+    alisa lsf ="ls -f"
+
+  - lsd => like "ls -l" but print only directories
+   alisa lsd="ls -d"
+
+  - lsg => like "ls -l" but print all directories first and then files
+   alisa lsg="ls -d | ls -f" 
