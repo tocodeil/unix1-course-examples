@@ -1,11 +1,16 @@
 1. Write an awk one-liner that prints the file "shells" with a blank line after each line
 Answer: 
 
+awk '1;!(NR%1){print "";}' /etc/shells
 
 2. Write an awk one-liner that prints the file "shells" with a ">" sign at the beginning of each line
 Answer: 
 
+awk '{print ">"$0}' /etc/shell
+
 3. Write an awk one-liner to swap the first and last words in the output of "help cd"
+
+help cd | awk '{v1=$1;v2=$NF;$1=$NF="";print v2, $0, v1}'
 
 4. The command /sbin/ifconfig prints information about network interfaces on the machine. A sample output is provided in the file "ifconfig.sample", and looks like this:
 
@@ -20,6 +25,50 @@ p2p0: flags=8843 mtu 2304
     status: inactive
 
 Write an awk one liner that splits this file into multiple file, one for each block, so after running the script we'll have a file named "en3" with the lines of the first block, and another file named "p2p0" with the lines of the second block.
+ 
+
+1. This is the output of the /sbin/ifconfig in my machine:( result of yosef@yosef-desktop:~$ /sbin/ifconfig )
+
+eth0      Link encap:Ethernet  HWaddr c0:3f:d5:6c:b4:bb  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:12649 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:12649 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:1045503 (1.0 MB)  TX bytes:1045503 (1.0 MB)
+
+wlan0     Link encap:Ethernet  HWaddr a0:a8:cd:4b:75:17  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:28889 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:26772 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:17709502 (17.7 MB)  TX bytes:4370627 (4.3 MB)
+
+2.I'd like to cut the files by 1st column before pattern /Link e*/.
+I firstly just find it and  print it out to bash :
+yosef@yosef-desktop:~$ /sbin/ifconfig | awk   ' /Link e*/ { print $1}'
+eth0
+lo
+wlan0
+
+But looking for opportunity to cut to files by delimiters cant use it.
+yosef@yosef-desktop:~$ /sbin/ifconfig | awk 'BEGIN{file = 0; filename = "ouroutput_" file ".txt"} /Link e*/ {getline; file ++; filename = "ouroutput_" file ".txt"}{print $0 > filename}'
+
+this command cuts into files but THE WHOLE LINE that contains delimeter is omitted
+
+:(
+
+please help to touch up it.
+and if you have useful resourses to start with awk because i don't understand how to use it up to level of this task
+
 
 
 
