@@ -1,15 +1,50 @@
 1. Write the following aliases into the file aliases (and upload that file too):
-  - ll => ls -l
-  - rm => rm -i
-  - cp => cp -i
+
+gedit someAlias.bash
+bash someAlias.bash
+
+ the file
+#!/bin/bash
+alias ll='ls -l' 
+alias rm='rm -i'
+alias cp='cp -i'
+
+
+___________
+ #I tried also to make vt5his file be opened with bash automaticaly:
+echo $SHELL
+/bin/bash
+
+#then I wrote in shell
+
+ ./someAlias.bash
+#but I got
+bash: ./someAlias.bash: Permission denied
+ 
+WHY? bash someAlias.bash works and this not?
 
 2. How can you "install" all defined aliases into the current shell? How can you add them permenantly to all shells?
 
+gedit .bashrc
+# some more ls aliases
+alias ll='ls -l' 
+alias rm='rm -i'
+alias cp='cp -i'
+#then to write in shell
+source ~/.bashrc
+
 3. Add the following aliases into the aliases file you defined previously:
   - count_files => print the number of files in current directory
+alias count_files='find .//. ! -name . -print | grep -c //'
   - bysize => print files ordered by size
+alias bysize='ls -lS | grep '^-' '
   - ff => search a file by partial name. For example running "ff ba" should print all files with "ba" in their name
+It should be a function, for only function can take user_input&regex together
+ff() { find . -iname "*$1*" -ls; }
   - lsf => like "ls -l" but print only files
+alias lsf=' ls -l | grep '^-' '
   - lsd => like "ls -l" but print only directories
+alias lsd=' ls -l | grep '^d' '
   - lsg => like "ls -l" but print all directories first and then files
+alias lsg='ls -la | grep "^d" && ls -la | grep "^-"'
 
