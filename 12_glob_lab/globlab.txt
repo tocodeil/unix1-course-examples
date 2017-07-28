@@ -9,32 +9,32 @@ Type in a glob pattern to match:
 
 1. All files whose name starts with a lowercase letter
 
-Answer: 
+Answer: ls 
 
 [a-z].?
 2. All files whose name starts with an uppercase letter
 Answer:
 
- 
+ ls 
 
 [A-Z].?
 3. All files whose name ends in an "a", "e", "i", "o" or "u"
 
 Answer:
 
- *.[a,e,i,o,u]
+ ls *[aeiou]
 4. All files whose name DOES NOT end in an "a", "e", "i", "o" or "u"
   
 Answer:
 
- *.-[a,e,i,o,u]
+ ls *[!aeiou]
 5. All files with extension ".c" that are in a folder named "src"
   
 Answer:
 
-  cd src ls *.c
+  ls *.c /src
 6. All files with extension ".c" under any folder
-Answer: echo *.c
+Answer: ls *.c
 
 
 
